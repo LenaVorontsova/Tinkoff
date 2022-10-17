@@ -26,6 +26,11 @@
 		84B4A79828FD37D5001D2CD3 /* CateringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A79728FD37D5001D2CD3 /* CateringViewController.swift */; };
 		84B4A79A28FD3827001D2CD3 /* CateringPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A79928FD3827001D2CD3 /* CateringPresenter.swift */; };
 		84B4A79C28FD3836001D2CD3 /* CateringBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A79B28FD3836001D2CD3 /* CateringBuilder.swift */; };
+		84B4A79F28FD3AFE001D2CD3 /* StartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A79E28FD3AFE001D2CD3 /* StartService.swift */; };
+		84B4A7A228FD3B54001D2CD3 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A7A128FD3B54001D2CD3 /* SplashScreenViewController.swift */; };
+		84B4A7A428FD3B66001D2CD3 /* SplashScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A7A328FD3B66001D2CD3 /* SplashScreenPresenter.swift */; };
+		84B4A7A628FD3B70001D2CD3 /* SplashScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A7A528FD3B70001D2CD3 /* SplashScreenBuilder.swift */; };
+		84B4A7A928FD5EF8001D2CD3 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A7A828FD5EF8001D2CD3 /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +55,11 @@
 		84B4A79728FD37D5001D2CD3 /* CateringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CateringViewController.swift; sourceTree = "<group>"; };
 		84B4A79928FD3827001D2CD3 /* CateringPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CateringPresenter.swift; sourceTree = "<group>"; };
 		84B4A79B28FD3836001D2CD3 /* CateringBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CateringBuilder.swift; sourceTree = "<group>"; };
+		84B4A79E28FD3AFE001D2CD3 /* StartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartService.swift; sourceTree = "<group>"; };
+		84B4A7A128FD3B54001D2CD3 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		84B4A7A328FD3B66001D2CD3 /* SplashScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenPresenter.swift; sourceTree = "<group>"; };
+		84B4A7A528FD3B70001D2CD3 /* SplashScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenBuilder.swift; sourceTree = "<group>"; };
+		84B4A7A828FD5EF8001D2CD3 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		B59646E364AF3BA36CF240C4 /* Pods_Tinkoff.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tinkoff.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C26A54A539ACD1B82A954AFE /* Pods-Tinkoff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinkoff.release.xcconfig"; path = "Target Support Files/Pods-Tinkoff/Pods-Tinkoff.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +107,7 @@
 		84B4A76428FD1759001D2CD3 /* Tinkoff */ = {
 			isa = PBXGroup;
 			children = (
+				84B4A79D28FD3AED001D2CD3 /* Services */,
 				84B4A78828FD25AE001D2CD3 /* Models */,
 				84B4A78528FD22BC001D2CD3 /* Cells */,
 				84B4A77F28FD204B001D2CD3 /* Modules */,
@@ -112,6 +123,8 @@
 		84B4A77F28FD204B001D2CD3 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				84B4A7A728FD5EDE001D2CD3 /* TabBar */,
+				84B4A7A028FD3B39001D2CD3 /* SplashScreen */,
 				84B4A79628FD373C001D2CD3 /* Catering */,
 				84B4A78B28FD30A4001D2CD3 /* Attractions */,
 				84B4A78028FD206E001D2CD3 /* News */,
@@ -165,6 +178,32 @@
 				84B4A79B28FD3836001D2CD3 /* CateringBuilder.swift */,
 			);
 			path = Catering;
+			sourceTree = "<group>";
+		};
+		84B4A79D28FD3AED001D2CD3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				84B4A79E28FD3AFE001D2CD3 /* StartService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		84B4A7A028FD3B39001D2CD3 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				84B4A7A128FD3B54001D2CD3 /* SplashScreenViewController.swift */,
+				84B4A7A328FD3B66001D2CD3 /* SplashScreenPresenter.swift */,
+				84B4A7A528FD3B70001D2CD3 /* SplashScreenBuilder.swift */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		84B4A7A728FD5EDE001D2CD3 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				84B4A7A828FD5EF8001D2CD3 /* TabBarViewController.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		9B43AE394193C940D723936E /* Frameworks */ = {
@@ -312,17 +351,22 @@
 				84B4A77028FD1759001D2CD3 /* Tinkoff.xcdatamodeld in Sources */,
 				84B4A78728FD22D4001D2CD3 /* NewsTableViewCell.swift in Sources */,
 				84B4A79A28FD3827001D2CD3 /* CateringPresenter.swift in Sources */,
+				84B4A7A628FD3B70001D2CD3 /* SplashScreenBuilder.swift in Sources */,
+				84B4A7A228FD3B54001D2CD3 /* SplashScreenViewController.swift in Sources */,
 				84B4A79828FD37D5001D2CD3 /* CateringViewController.swift in Sources */,
 				84B4A76628FD1759001D2CD3 /* AppDelegate.swift in Sources */,
+				84B4A7A928FD5EF8001D2CD3 /* TabBarViewController.swift in Sources */,
 				84B4A79528FD3345001D2CD3 /* AttractionsTableViewCell.swift in Sources */,
 				84B4A79128FD30E3001D2CD3 /* AttractionsBuilder.swift in Sources */,
 				84B4A78F28FD30D9001D2CD3 /* AttractionsPresenter.swift in Sources */,
 				84B4A79328FD31DA001D2CD3 /* Attraction.swift in Sources */,
 				84B4A78A28FD25BC001D2CD3 /* News.swift in Sources */,
 				84B4A78D28FD30C9001D2CD3 /* AttractionsViewController.swift in Sources */,
+				84B4A79F28FD3AFE001D2CD3 /* StartService.swift in Sources */,
 				84B4A78428FD20A7001D2CD3 /* NewsBuilder.swift in Sources */,
 				84B4A78228FD209C001D2CD3 /* NewsPresenter.swift in Sources */,
 				84B4A79C28FD3836001D2CD3 /* CateringBuilder.swift in Sources */,
+				84B4A7A428FD3B66001D2CD3 /* SplashScreenPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

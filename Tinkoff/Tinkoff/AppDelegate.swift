@@ -10,15 +10,19 @@ import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
+    var startService: StartService?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let presenter: CateringPresenting = CateringPresenter()
-        window = UIWindow(frame: UIScreen.main.bounds)
-        let initialViewController = CateringViewController(presenter: presenter)
-        window!.rootViewController = initialViewController
-        window!.makeKeyAndVisible()
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = window
+        startService = StartService(window: window)
+        
+//        let presenter: CateringPresenting = CateringPresenter()
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//        let initialViewController = CateringViewController(presenter: presenter)
+//        window!.rootViewController = initialViewController
+//        window!.makeKeyAndVisible()
         return true
     }
 
