@@ -14,9 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let presenter: NewsPresenting = NewsPresenter()
         window = UIWindow(frame: UIScreen.main.bounds)
-        let initialViewController = ViewController()
-        initialViewController.view.backgroundColor = UIColor.cyan
+        let initialViewController = NewsViewController(presenter: presenter)
+        initialViewController.view.backgroundColor = UIColor.white
         window!.rootViewController = initialViewController
         window!.makeKeyAndVisible()
         return true
