@@ -25,6 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        window!.makeKeyAndVisible()
         return true
     }
+    
+//    func applicationDidBecomeActive(_ application: UIApplication) {
+//        UIApplication.shared.applicationIconBadgeNumber = 0
+//    }
 
     // MARK: - Core Data stack
 

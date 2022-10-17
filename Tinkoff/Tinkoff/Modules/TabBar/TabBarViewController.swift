@@ -20,7 +20,7 @@ final class TabBarViewController: UITabBarController {
         let attractionVC = UINavigationController(rootViewController: AttractionsBuilder.build())
         newsVC.title = "Новости"
         cateringVC.title = "Питание"
-        attractionVC.title = "Достопримечательности"
+        attractionVC.title = "Места"
         self.setViewControllers([newsVC, cateringVC, attractionVC], animated: false)
         guard let items = self.tabBar.items else {
             return

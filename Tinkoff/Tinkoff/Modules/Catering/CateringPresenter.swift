@@ -16,6 +16,5 @@ final class CateringPresenter: CateringPresenting {
     weak var controller: CateringViewController?
     
     func showMap() {
-        controller?.view.backgroundColor = UIColor(named: "tinkoffYellow")
     }
 }

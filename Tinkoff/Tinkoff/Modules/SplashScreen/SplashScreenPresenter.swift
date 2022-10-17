@@ -22,8 +22,8 @@ final class SplashScreenPresenter: SplashScreenPresenting {
     }
     
     func showTabBar() {
-//        let tabBarVC = TabBarViewController()
-//        tabBarVC.modalPresentationStyle = .fullScreen
-//        controller?.present(tabBarVC, animated: false)
+        let tabBarVC = TabBarViewController()
+        tabBarVC.modalPresentationStyle = .fullScreen
+        controller?.present(tabBarVC, animated: false)
     }
 }
