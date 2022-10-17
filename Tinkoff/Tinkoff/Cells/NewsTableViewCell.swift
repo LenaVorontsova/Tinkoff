@@ -25,7 +25,7 @@ protocol ReusableView: AnyObject {
     static var identifier: String { get }
 }
 
-enum ConstantsNewsCell {
+enum ConstantsCell {
     static let sizeImage = 103
     static let topAndLeadImage = 10
     
@@ -65,20 +65,20 @@ final class NewsTableViewCell: UITableViewCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(newsTextLabel)
         newsImage.snp.makeConstraints {
-            $0.width.height.equalTo(ConstantsNewsCell.sizeImage)
-            $0.top.equalTo(contentView.safeAreaLayoutGuide.snp.top).offset(ConstantsNewsCell.topAndLeadImage)
+            $0.width.height.equalTo(ConstantsCell.sizeImage)
+            $0.top.equalTo(contentView.safeAreaLayoutGuide.snp.top).offset(ConstantsCell.topAndLeadImage)
             $0.leading.equalTo(contentView.safeAreaLayoutGuide.snp.leading)
-                .offset(ConstantsNewsCell.topAndLeadImage)
+                .offset(ConstantsCell.topAndLeadImage)
         }
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(ConstantsNewsCell.topAndLeadImage)
-            $0.leading.equalTo(newsImage.snp.trailing).offset(ConstantsNewsCell.offsetLabels)
-            $0.trailing.equalToSuperview().offset(-ConstantsNewsCell.offsetLabels)
+            $0.top.equalToSuperview().offset(ConstantsCell.topAndLeadImage)
+            $0.leading.equalTo(newsImage.snp.trailing).offset(ConstantsCell.offsetLabels)
+            $0.trailing.equalToSuperview().offset(-ConstantsCell.offsetLabels)
         }
         newsTextLabel.snp.makeConstraints {
-            $0.leading.equalTo(newsImage.snp.trailing).offset(ConstantsNewsCell.offsetLabels)
-            $0.trailing.equalToSuperview().offset(-ConstantsNewsCell.offsetLabels)
-            $0.top.equalTo(titleLabel.snp.bottom).offset(ConstantsNewsCell.topLabels)
+            $0.leading.equalTo(newsImage.snp.trailing).offset(ConstantsCell.offsetLabels)
+            $0.trailing.equalToSuperview().offset(-ConstantsCell.offsetLabels)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(ConstantsCell.topLabels)
         }
     }
     

@@ -1,14 +1,14 @@
 //
-//  NewsViewController.swift
+//  AttractionsViewController.swift
 //  Tinkoff
 //
 //  Created by Lena Vorontsova on 17.10.2022.
 //
 
+import Foundation
 import UIKit
-import SnapKit
 
-class NewsViewController: UIViewController {
+final class AttractionsViewController: UIViewController {
     private var tableView: UITableView = {
         let table = UITableView()
         return table
@@ -17,9 +17,9 @@ class NewsViewController: UIViewController {
         let search = UISearchBar()
         return search
     }()
-    private let presenter: NewsPresenting
-    
-    init(presenter: NewsPresenting) {
+    private let presenter: AttractionsPresenting
+
+    init(presenter: AttractionsPresenting) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -34,10 +34,10 @@ class NewsViewController: UIViewController {
         tableView.dataSource = self
         searchBar.delegate = self
         configureConstraints()
-        presenter.fillInNews()
-        self.tableView.register(NewsTableViewCell.self,
-                                forCellReuseIdentifier: NewsTableViewCell.identifier)
-        self.title = "Новости"
+        presenter.fillInAttractions()
+        self.tableView.register(AttractionsTableViewCell.self,
+                                forCellReuseIdentifier: AttractionsTableViewCell.identifier)
+        self.title = "Достопримечательности"
     }
     
     private func configureConstraints() {
@@ -59,17 +59,17 @@ class NewsViewController: UIViewController {
     }
 }
 
-extension NewsViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+extension AttractionsViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier,
-                                                       for: indexPath) as? NewsTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: AttractionsTableViewCell.identifier,
+                                                       for: indexPath) as? AttractionsTableViewCell else {
             return UITableViewCell()
         }
-        let cellModel = NewsTableViewCellFactory.cellModel(presenter.newsSearch[indexPath.row])
+        let cellModel = AttractionTableViewCellFactory.cellModel(presenter.attractionsSearch[indexPath.row])
         cell.config(with: cellModel)
         return cell
     }

@@ -14,9 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let presenter: NewsPresenting = NewsPresenter()
+        let presenter: AttractionsPresenting = AttractionsPresenter()
         window = UIWindow(frame: UIScreen.main.bounds)
-        let initialViewController = NewsViewController(presenter: presenter)
+        let initialViewController = AttractionsViewController(presenter: presenter)
         initialViewController.view.backgroundColor = UIColor.white
         window!.rootViewController = initialViewController
         window!.makeKeyAndVisible()
