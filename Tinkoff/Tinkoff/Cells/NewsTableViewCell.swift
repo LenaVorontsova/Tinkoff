@@ -16,7 +16,8 @@ struct NewsTableViewCellModel {
 
 enum NewsTableViewCellFactory {
     static func cellModel(_ inf: News) -> NewsTableViewCellModel {
-        NewsTableViewCellModel(newsTitle: "Title", newsTextTitle: "Text")
+        NewsTableViewCellModel(newsTitle: inf.newsTitle,
+                               newsTextTitle: inf.newsText)
     }
 }
 
