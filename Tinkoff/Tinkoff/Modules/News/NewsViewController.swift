@@ -38,6 +38,7 @@ class NewsViewController: UIViewController {
         self.tableView.register(NewsTableViewCell.self,
                                 forCellReuseIdentifier: NewsTableViewCell.identifier)
         view.backgroundColor = UIColor(named: "tinkoffGray")
+        self.title = "Новости"
     }
     
     private func configureConstraints() {

@@ -85,6 +85,29 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		844DCC632900425A0070D674 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				844DCC65290042F50070D674 /* AttractionDetails */,
+				844DCC64290042E60070D674 /* NewsDetails */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		844DCC64290042E60070D674 /* NewsDetails */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NewsDetails;
+			sourceTree = "<group>";
+		};
+		844DCC65290042F50070D674 /* AttractionDetails */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AttractionDetails;
+			sourceTree = "<group>";
+		};
 		84B4A75928FD1759001D2CD3 = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +146,7 @@
 		84B4A77F28FD204B001D2CD3 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				844DCC632900425A0070D674 /* Details */,
 				84B4A7A728FD5EDE001D2CD3 /* TabBar */,
 				84B4A7A028FD3B39001D2CD3 /* SplashScreen */,
 				84B4A79628FD373C001D2CD3 /* Catering */,

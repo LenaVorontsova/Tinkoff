@@ -38,6 +38,7 @@ final class AttractionsViewController: UIViewController {
         self.tableView.register(AttractionsTableViewCell.self,
                                 forCellReuseIdentifier: AttractionsTableViewCell.identifier)
         view.backgroundColor = UIColor(named: "tinkoffGray")
+        self.title = "Места"
     }
     
     private func configureConstraints() {
