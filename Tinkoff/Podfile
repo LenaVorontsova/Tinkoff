@@ -8,5 +8,6 @@ target 'Tinkoff' do
   # Pods for Tinkoff
 pod 'SwiftLint'
 pod 'SnapKit'
+pod 'R.swift'
 
 end

@@ -16,7 +16,7 @@ enum SplashConstant {
 final class SplashScreenViewController: UIViewController {
     private var imageView: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "tinkoffIcon")
+        image.image = R.image.tinkoffIcon()
         return image
     }()
     private let presenter: SplashScreenPresenting
@@ -41,7 +41,7 @@ final class SplashScreenViewController: UIViewController {
     }
     
     private func configureConstraints() {
-        view.backgroundColor = UIColor(named: "tinkoffYellow")
+        view.backgroundColor = R.color.tinkoffYellow()
         view.addSubview(imageView)
         imageView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(SplashConstant.topImage)

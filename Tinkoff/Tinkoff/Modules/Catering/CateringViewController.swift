@@ -21,7 +21,7 @@ final class CateringViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "tinkoffGray")
+        view.backgroundColor = R.color.tinkoffGray()
         presenter.showMap()
     }
 }

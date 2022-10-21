@@ -28,7 +28,7 @@ final class NewsViewModel: DetailViewModelProtocol {
 final class AttractionsViewModel: DetailViewModelProtocol {
     private var attraction: Attraction
     var image: UIImage? {
-        UIImage(named: "tinkoffIcon")
+        R.image.tinkoffIcon()
     }
     var titleLabel: [String]? {
         var arr = [String]()

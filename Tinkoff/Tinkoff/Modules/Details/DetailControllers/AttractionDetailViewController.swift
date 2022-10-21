@@ -36,7 +36,7 @@ final class AttractionDetailViewController: UIViewController {
         super.viewDidLoad()
         addTitle()
         configureConstraints()
-        view.backgroundColor = UIColor(named: "tinkoffGray")
+        view.backgroundColor = R.color.tinkoffGray()
     }
     
     private func addTitle() {
@@ -48,7 +48,7 @@ final class AttractionDetailViewController: UIViewController {
             label.textAlignment = .center
             stackView.addArrangedSubview(label)
         }
-        attractionImage.image = UIImage(named: "tinkoffIcon")
+        attractionImage.image = R.image.tinkoffIcon()
     }
     
     private func configureConstraints() {

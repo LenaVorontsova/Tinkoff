@@ -17,12 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
         startService = StartService(window: window)
-        
-//        let presenter: CateringPresenting = CateringPresenter()
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//        let initialViewController = CateringViewController(presenter: presenter)
-//        window!.rootViewController = initialViewController
-//        window!.makeKeyAndVisible()
         return true
     }
     

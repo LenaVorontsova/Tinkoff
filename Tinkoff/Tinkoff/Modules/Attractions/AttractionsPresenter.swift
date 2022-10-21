@@ -22,7 +22,7 @@ final class AttractionsPresenter: AttractionsPresenting {
     
     func fillInAttractions() {
         for _ in 0...10 {
-            attractions.append(Attraction(image: UIImage(named: "tinkoffIcon"),
+            attractions.append(Attraction(image: R.image.tinkoffIcon(),
                                           attractionTitle: "AttractionsName",
                                           attractionDescriprion: "AttractionsDescription",
                                           attractionAddress: "AttractionsAddres"))

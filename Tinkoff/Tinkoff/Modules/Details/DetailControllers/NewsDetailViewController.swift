@@ -44,7 +44,7 @@ final class NewsDetailViewController: UIViewController {
         super.viewDidLoad()
         addTitle()
         configureConstraints()
-        view.backgroundColor = UIColor(named: "tinkoffGray")
+        view.backgroundColor = R.color.tinkoffGray()
     }
     
     private func addTitle() {
@@ -56,7 +56,7 @@ final class NewsDetailViewController: UIViewController {
             label.textAlignment = .center
             stackView.addArrangedSubview(label)
         }
-        newsImage.image = UIImage(named: "tinkoffIcon")
+        newsImage.image = R.image.tinkoffIcon()
     }
     
     private func configureConstraints() {

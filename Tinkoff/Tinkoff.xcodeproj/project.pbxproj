@@ -12,6 +12,7 @@
 		844DCC77290151010070D674 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DCC76290151010070D674 /* DetailsViewModel.swift */; };
 		844DCC792901518C0070D674 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DCC782901518C0070D674 /* NewsDetailViewController.swift */; };
 		844DCC7B290158B30070D674 /* AttractionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DCC7A290158B30070D674 /* AttractionDetailViewController.swift */; };
+		844DCC7F2902F1980070D674 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DCC7E2902F1980070D674 /* R.generated.swift */; };
 		84B4A76628FD1759001D2CD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A76528FD1759001D2CD3 /* AppDelegate.swift */; };
 		84B4A76A28FD1759001D2CD3 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A76928FD1759001D2CD3 /* NewsViewController.swift */; };
 		84B4A77028FD1759001D2CD3 /* Tinkoff.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A76E28FD1759001D2CD3 /* Tinkoff.xcdatamodeld */; };
@@ -43,6 +44,7 @@
 		844DCC76290151010070D674 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		844DCC782901518C0070D674 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		844DCC7A290158B30070D674 /* AttractionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionDetailViewController.swift; sourceTree = "<group>"; };
+		844DCC7E2902F1980070D674 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		84B4A76228FD1759001D2CD3 /* Tinkoff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tinkoff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B4A76528FD1759001D2CD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84B4A76928FD1759001D2CD3 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
@@ -112,10 +114,18 @@
 			path = DetailControllers;
 			sourceTree = "<group>";
 		};
+		844DCC802902F38A0070D674 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		84B4A75928FD1759001D2CD3 = {
 			isa = PBXGroup;
 			children = (
 				84B4A77D28FD1F11001D2CD3 /* .swiftlint.yml */,
+				844DCC7E2902F1980070D674 /* R.generated.swift */,
 				84B4A76428FD1759001D2CD3 /* Tinkoff */,
 				84B4A76328FD1759001D2CD3 /* Products */,
 				4B5520DC648AFA00D783A676 /* Pods */,
@@ -134,6 +144,7 @@
 		84B4A76428FD1759001D2CD3 /* Tinkoff */ = {
 			isa = PBXGroup;
 			children = (
+				844DCC802902F38A0070D674 /* Localization */,
 				84B4A79D28FD3AED001D2CD3 /* Services */,
 				84B4A78828FD25AE001D2CD3 /* Models */,
 				84B4A78528FD22BC001D2CD3 /* Cells */,
@@ -250,6 +261,7 @@
 			buildConfigurationList = 84B4A77928FD175D001D2CD3 /* Build configuration list for PBXNativeTarget "Tinkoff" */;
 			buildPhases = (
 				8970F338B31C0B67BA2528E7 /* [CP] Check Pods Manifest.lock */,
+				844DCC7D2902F00A0070D674 /* ShellScript */,
 				84B4A75E28FD1759001D2CD3 /* Sources */,
 				84B4A75F28FD1759001D2CD3 /* Frameworks */,
 				84B4A76028FD1759001D2CD3 /* Resources */,
@@ -329,6 +341,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tinkoff/Pods-Tinkoff-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		844DCC7D2902F00A0070D674 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/$SRCROOT/R.generated.swift ",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
 		84B4A77C28FD1E91001D2CD3 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -377,6 +407,7 @@
 			files = (
 				84B4A76A28FD1759001D2CD3 /* NewsViewController.swift in Sources */,
 				84B4A77028FD1759001D2CD3 /* Tinkoff.xcdatamodeld in Sources */,
+				844DCC7F2902F1980070D674 /* R.generated.swift in Sources */,
 				84B4A78728FD22D4001D2CD3 /* NewsTableViewCell.swift in Sources */,
 				84B4A79A28FD3827001D2CD3 /* CateringPresenter.swift in Sources */,
 				84B4A7A628FD3B70001D2CD3 /* SplashScreenBuilder.swift in Sources */,

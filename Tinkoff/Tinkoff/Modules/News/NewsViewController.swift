@@ -37,7 +37,7 @@ class NewsViewController: UIViewController {
         presenter.fillInNews()
         self.tableView.register(NewsTableViewCell.self,
                                 forCellReuseIdentifier: NewsTableViewCell.identifier)
-        view.backgroundColor = UIColor(named: "tinkoffGray")
+        view.backgroundColor = R.color.tinkoffGray()
         self.title = "Новости"
     }
     

@@ -37,7 +37,7 @@ final class AttractionsViewController: UIViewController {
         presenter.fillInAttractions()
         self.tableView.register(AttractionsTableViewCell.self,
                                 forCellReuseIdentifier: AttractionsTableViewCell.identifier)
-        view.backgroundColor = UIColor(named: "tinkoffGray")
+        view.backgroundColor = R.color.tinkoffGray()
         self.title = "Места"
     }
     
