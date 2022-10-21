@@ -59,7 +59,7 @@ final class NewsTableViewCell: UITableViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(R.string.cells.fatalError())
     }
     
     private func configureConstraints() {
@@ -92,6 +92,6 @@ final class NewsTableViewCell: UITableViewCell {
 
 extension NewsTableViewCell: ReusableView {
     static var identifier: String {
-        return "newsCell"
+        return R.string.cells.newsCell()
     }
 }

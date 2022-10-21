@@ -25,7 +25,7 @@ final class AttractionsViewController: UIViewController {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(R.string.cells.fatalError())
     }
     
     override func viewDidLoad() {
@@ -38,7 +38,7 @@ final class AttractionsViewController: UIViewController {
         self.tableView.register(AttractionsTableViewCell.self,
                                 forCellReuseIdentifier: AttractionsTableViewCell.identifier)
         view.backgroundColor = R.color.tinkoffGray()
-        self.title = "Места"
+        self.title = R.string.modules.attractionTitleRus()
     }
     
     private func configureConstraints() {

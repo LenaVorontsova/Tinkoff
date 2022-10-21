@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2F20A7F9960EC8C8C25D2787 /* Pods_Tinkoff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59646E364AF3BA36CF240C4 /* Pods_Tinkoff.framework */; };
+		844393522902F48F0072B958 /* Cells.strings in Resources */ = {isa = PBXBuildFile; fileRef = 844393512902F48F0072B958 /* Cells.strings */; };
+		844393542902F5900072B958 /* Modules.strings in Resources */ = {isa = PBXBuildFile; fileRef = 844393532902F5900072B958 /* Modules.strings */; };
 		844DCC73290150BC0070D674 /* DetailViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DCC72290150BC0070D674 /* DetailViewModelProtocol.swift */; };
 		844DCC77290151010070D674 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DCC76290151010070D674 /* DetailsViewModel.swift */; };
 		844DCC792901518C0070D674 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DCC782901518C0070D674 /* NewsDetailViewController.swift */; };
@@ -40,6 +42,8 @@
 
 /* Begin PBXFileReference section */
 		10710DEA7C0B5CDD4ED77948 /* Pods-Tinkoff.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinkoff.debug.xcconfig"; path = "Target Support Files/Pods-Tinkoff/Pods-Tinkoff.debug.xcconfig"; sourceTree = "<group>"; };
+		844393512902F48F0072B958 /* Cells.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Cells.strings; sourceTree = "<group>"; };
+		844393532902F5900072B958 /* Modules.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Modules.strings; sourceTree = "<group>"; };
 		844DCC72290150BC0070D674 /* DetailViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelProtocol.swift; sourceTree = "<group>"; };
 		844DCC76290151010070D674 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		844DCC782901518C0070D674 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 		844DCC802902F38A0070D674 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
+				844393512902F48F0072B958 /* Cells.strings */,
+				844393532902F5900072B958 /* Modules.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -315,6 +321,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				844393522902F48F0072B958 /* Cells.strings in Resources */,
+				844393542902F5900072B958 /* Modules.strings in Resources */,
 				84B4A77E28FD1F11001D2CD3 /* .swiftlint.yml in Resources */,
 				84B4A77528FD175D001D2CD3 /* LaunchScreen.storyboard in Resources */,
 				84B4A77228FD175D001D2CD3 /* Assets.xcassets in Resources */,

@@ -46,7 +46,7 @@ final class AttractionsTableViewCell: UITableViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(R.string.cells.fatalError())
     }
     
     private func configureConstraints() {
@@ -79,6 +79,6 @@ final class AttractionsTableViewCell: UITableViewCell {
 
 extension AttractionsTableViewCell: ReusableView {
     static var identifier: String {
-        return "attractionsCell"
+        return R.string.cells.attractionsCell()
     }
 }

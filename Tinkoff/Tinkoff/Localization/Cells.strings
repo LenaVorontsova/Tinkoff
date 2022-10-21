@@ -1,0 +1,11 @@
+/* 
+  Cells.strings
+  Tinkoff
+
+  Created by Lena Vorontsova on 21.10.2022.
+  
+*/
+"fatalError" = "init(coder:) has not been implemented";
+
+"newsCell" = "newsCell";
+"attractionsCell" = "attractionsCell";
