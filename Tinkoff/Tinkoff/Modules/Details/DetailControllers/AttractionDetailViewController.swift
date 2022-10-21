@@ -1,5 +1,5 @@
 //
-//  NewsDetailViewController.swift
+//  AttractionDetailViewController.swift
 //  Tinkoff
 //
 //  Created by Lena Vorontsova on 20.10.2022.
@@ -8,16 +8,12 @@
 import Foundation
 import UIKit
 
-enum ConstantsDetail {
-    static let sizeAvatar = 250
-    static let topAvatar = 10
-    static let offsetAvatar = 20
-    static let leadStack = 30
-    static let topStack = 370
-    static let spacingStack = 5
-}
-
-final class NewsDetailViewController: UIViewController {
+final class AttractionDetailViewController: UIViewController {
+    private lazy var attractionImage: UIImageView = {
+        let image = UIImageView()
+        return image
+    }()
+    
     private var stackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
@@ -52,13 +48,22 @@ final class NewsDetailViewController: UIViewController {
             label.textAlignment = .center
             stackView.addArrangedSubview(label)
         }
+        attractionImage.image = UIImage(named: "tinkoffIcon")
     }
     
     private func configureConstraints() {
+        self.view.addSubview(attractionImage)
         self.view.addSubview(stackView)
+        attractionImage.snp.makeConstraints {
+            $0.height.width.equalTo(ConstantsDetail.sizeAvatar)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.topAvatar)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.offsetAvatar)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-ConstantsDetail.offsetAvatar)
+        }
         stackView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(ConstantsDetail.topStack)
-            $0.center.equalToSuperview()
+            $0.top.equalTo(attractionImage.snp.bottom).offset(ConstantsDetail.topAvatar)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.offsetStack)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-ConstantsDetail.offsetAvatar)
         }
     }
 }

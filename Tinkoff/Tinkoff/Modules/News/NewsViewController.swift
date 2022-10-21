@@ -72,6 +72,7 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate, UISear
         }
         let cellModel = NewsTableViewCellFactory.cellModel(presenter.newsSearch[indexPath.row])
         cell.config(with: cellModel)
+        cell.newsImage.image = presenter.newsSearch[indexPath.row].image
         return cell
     }
     

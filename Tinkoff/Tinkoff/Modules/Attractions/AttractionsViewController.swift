@@ -72,6 +72,7 @@ extension AttractionsViewController: UITableViewDataSource, UITableViewDelegate,
         }
         let cellModel = AttractionTableViewCellFactory.cellModel(presenter.attractionsSearch[indexPath.row])
         cell.config(with: cellModel)
+        cell.attractionImage.image = presenter.attractionsSearch[indexPath.row].image
         return cell
     }
     
@@ -80,11 +81,9 @@ extension AttractionsViewController: UITableViewDataSource, UITableViewDelegate,
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let viewModel = presenter.pathCharacterViewModel(indexPath: indexPath)
-//        let controller = DetailViewController(viewModel: viewModel)
-//        self.navigationController?.pushViewController(controller, animated: true)
-//        let alert = self.presenter.showNotification()
-//        self.present(alert, animated: true, completion: nil)
+        let viewModel = presenter.pathAttraction(indexPath: indexPath)
+        let controller = AttractionDetailViewController(viewModel: viewModel)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

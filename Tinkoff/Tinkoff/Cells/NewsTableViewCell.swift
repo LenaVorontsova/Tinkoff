@@ -34,7 +34,7 @@ enum ConstantsCell {
 }
 
 final class NewsTableViewCell: UITableViewCell {
-    private lazy var newsImage: UIImageView = {
+    lazy var newsImage: UIImageView = {
         let image = UIImageView()
         return image
     }()

@@ -11,5 +11,6 @@ import UIKit
 struct Attraction {
     var image: UIImage?
     var attractionTitle: String?
+    var attractionDescriprion: String?
     var attractionAddress: String?
 }

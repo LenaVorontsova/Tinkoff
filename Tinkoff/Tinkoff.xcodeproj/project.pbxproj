@@ -11,6 +11,7 @@
 		844DCC73290150BC0070D674 /* DetailViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DCC72290150BC0070D674 /* DetailViewModelProtocol.swift */; };
 		844DCC77290151010070D674 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DCC76290151010070D674 /* DetailsViewModel.swift */; };
 		844DCC792901518C0070D674 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DCC782901518C0070D674 /* NewsDetailViewController.swift */; };
+		844DCC7B290158B30070D674 /* AttractionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DCC7A290158B30070D674 /* AttractionDetailViewController.swift */; };
 		84B4A76628FD1759001D2CD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A76528FD1759001D2CD3 /* AppDelegate.swift */; };
 		84B4A76A28FD1759001D2CD3 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A76928FD1759001D2CD3 /* NewsViewController.swift */; };
 		84B4A77028FD1759001D2CD3 /* Tinkoff.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A76E28FD1759001D2CD3 /* Tinkoff.xcdatamodeld */; };
@@ -41,6 +42,7 @@
 		844DCC72290150BC0070D674 /* DetailViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelProtocol.swift; sourceTree = "<group>"; };
 		844DCC76290151010070D674 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		844DCC782901518C0070D674 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
+		844DCC7A290158B30070D674 /* AttractionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionDetailViewController.swift; sourceTree = "<group>"; };
 		84B4A76228FD1759001D2CD3 /* Tinkoff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tinkoff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B4A76528FD1759001D2CD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84B4A76928FD1759001D2CD3 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
@@ -96,9 +98,18 @@
 			children = (
 				844DCC72290150BC0070D674 /* DetailViewModelProtocol.swift */,
 				844DCC76290151010070D674 /* DetailsViewModel.swift */,
-				844DCC782901518C0070D674 /* NewsDetailViewController.swift */,
+				844DCC7C29015A6D0070D674 /* DetailControllers */,
 			);
 			path = Details;
+			sourceTree = "<group>";
+		};
+		844DCC7C29015A6D0070D674 /* DetailControllers */ = {
+			isa = PBXGroup;
+			children = (
+				844DCC7A290158B30070D674 /* AttractionDetailViewController.swift */,
+				844DCC782901518C0070D674 /* NewsDetailViewController.swift */,
+			);
+			path = DetailControllers;
 			sourceTree = "<group>";
 		};
 		84B4A75928FD1759001D2CD3 = {
@@ -386,6 +397,7 @@
 				84B4A78428FD20A7001D2CD3 /* NewsBuilder.swift in Sources */,
 				84B4A78228FD209C001D2CD3 /* NewsPresenter.swift in Sources */,
 				84B4A79C28FD3836001D2CD3 /* CateringBuilder.swift in Sources */,
+				844DCC7B290158B30070D674 /* AttractionDetailViewController.swift in Sources */,
 				84B4A7A428FD3B66001D2CD3 /* SplashScreenPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

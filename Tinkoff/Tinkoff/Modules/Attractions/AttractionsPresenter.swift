@@ -12,6 +12,7 @@ protocol AttractionsPresenting: AnyObject {
     var attractions: [Attraction] { get set }
     var attractionsSearch: [Attraction] { get set }
     func fillInAttractions()
+    func pathAttraction(indexPath: IndexPath) -> DetailViewModelProtocol
 }
 
 final class AttractionsPresenter: AttractionsPresenting {
@@ -21,11 +22,16 @@ final class AttractionsPresenter: AttractionsPresenting {
     
     func fillInAttractions() {
         for _ in 0...10 {
-            attractions.append(Attraction(image: UIImage(named: "person.3"),
+            attractions.append(Attraction(image: UIImage(named: "tinkoffIcon"),
                                           attractionTitle: "AttractionsName",
+                                          attractionDescriprion: "AttractionsDescription",
                                           attractionAddress: "AttractionsAddres"))
             attractionsSearch = attractions
         }
         self.controller?.reloadTable()
+    }
+    
+    func pathAttraction(indexPath: IndexPath) -> DetailViewModelProtocol {
+        return AttractionsViewModel(attraction: attractionsSearch[indexPath.row])
     }
 }

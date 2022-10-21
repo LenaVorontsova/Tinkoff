@@ -22,7 +22,7 @@ final class NewsPresenter: NewsPresenting {
     
     func fillInNews() {
         for _ in 0...10 {
-            news.append(News(image: UIImage(named: "person.3"),
+            news.append(News(image: UIImage(named: "tinkoffIcon"),
                              newsTitle: "Title text",
                              newsText: "Full text"))
             newsSearch = news
