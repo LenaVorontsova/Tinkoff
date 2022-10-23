@@ -8,6 +8,13 @@
 import Foundation
 import UIKit
 
+struct AttractionNetwork: Decodable {
+    var image: String?
+    var attractionTitle: String?
+    var attractionDescriprion: String?
+    var attractionAddress: String?
+}
+
 struct Attraction {
     var image: UIImage?
     var attractionTitle: String?

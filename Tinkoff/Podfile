@@ -9,5 +9,6 @@ target 'Tinkoff' do
 pod 'SwiftLint'
 pod 'SnapKit'
 pod 'R.swift'
+pod 'Alamofire'
 
 end

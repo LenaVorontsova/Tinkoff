@@ -8,6 +8,12 @@
 import Foundation
 import UIKit
 
+struct NewsNetwork: Decodable {
+    var image: String?
+    var newsTitle: String?
+    var newsText: String?
+}
+
 struct News {
     var image: UIImage?
     var newsTitle: String?
