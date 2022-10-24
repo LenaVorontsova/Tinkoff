@@ -34,7 +34,8 @@ class NewsViewController: UIViewController {
         tableView.dataSource = self
         searchBar.delegate = self
         configureConstraints()
-        presenter.fillInNews()
+        presenter.loadData()
+        presenter.getInfoNews()
         self.tableView.register(NewsTableViewCell.self,
                                 forCellReuseIdentifier: NewsTableViewCell.identifier)
         view.backgroundColor = R.color.tinkoffGray()
@@ -62,7 +63,7 @@ class NewsViewController: UIViewController {
 
 extension NewsViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return presenter.newsSearch.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -72,7 +73,7 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate, UISear
         }
         let cellModel = NewsTableViewCellFactory.cellModel(presenter.newsSearch[indexPath.row])
         cell.config(with: cellModel)
-        cell.newsImage.image = presenter.newsSearch[indexPath.row].image
+        cell.newsImage.image = presenter.newsSearch[indexPath.row].photoPath
         return cell
     }
     

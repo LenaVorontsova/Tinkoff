@@ -9,13 +9,24 @@ import Foundation
 import UIKit
 
 final class TabBarViewController: UITabBarController {
+    private let dataService: IDataService
+    
+    init(dataService: IDataService) {
+        self.dataService = dataService
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError(R.string.cells.fatalError())
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         createTabBar()
     }
     
     private func createTabBar() {
-        let newsVC = UINavigationController(rootViewController: NewsBuilder.build())
+        let newsVC = UINavigationController(rootViewController: NewsBuilder.build(dataService: dataService))
         let cateringVC = UINavigationController(rootViewController: CateringBuilder.build())
         let attractionVC = UINavigationController(rootViewController: AttractionsBuilder.build())
         newsVC.title = R.string.modules.newsTitleRus()

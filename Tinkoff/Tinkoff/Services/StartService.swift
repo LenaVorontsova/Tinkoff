@@ -17,10 +17,15 @@ final class StartService {
     }
     
     func configureWindow() {
-        let presenter: SplashScreenPresenting = SplashScreenPresenter()
+        let network = NetworkService()
+        let dataService: IDataService = DataService(network: network)
+        let presenter: SplashScreenPresenting = SplashScreenPresenter(network: network,
+                                                                      dataService: dataService)
         if let win = window {
             win.rootViewController = UINavigationController(
-                rootViewController: SplashScreenBuilder.build(presenter: presenter))
+                rootViewController: SplashScreenBuilder.build(presenter: presenter,
+                                                              network: network,
+                                                              dataService: dataService))
             win.makeKeyAndVisible()
         }
     }

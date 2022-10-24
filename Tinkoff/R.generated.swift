@@ -197,8 +197,44 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.string` struct is generated, and contains static references to 2 localization tables.
+  /// This `R.string` struct is generated, and contains static references to 4 localization tables.
   struct string {
+    /// This `R.string.alertMessages` struct is generated, and contains static references to 2 localization keys.
+    struct alertMessages {
+      /// Value: Error
+      static let errorTitle = Rswift.StringResource(key: "errorTitle", tableName: "AlertMessages", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: OK
+      static let okTitle = Rswift.StringResource(key: "okTitle", tableName: "AlertMessages", bundle: R.hostingBundle, locales: [], comment: nil)
+
+      /// Value: Error
+      static func errorTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("errorTitle", tableName: "AlertMessages", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "AlertMessages", preferredLanguages: preferredLanguages) else {
+          return "errorTitle"
+        }
+
+        return NSLocalizedString("errorTitle", tableName: "AlertMessages", bundle: bundle, comment: "")
+      }
+
+      /// Value: OK
+      static func okTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("okTitle", tableName: "AlertMessages", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "AlertMessages", preferredLanguages: preferredLanguages) else {
+          return "okTitle"
+        }
+
+        return NSLocalizedString("okTitle", tableName: "AlertMessages", bundle: bundle, comment: "")
+      }
+
+      fileprivate init() {}
+    }
+
     /// This `R.string.cells` struct is generated, and contains static references to 3 localization keys.
     struct cells {
       /// Value: attractionsCell
@@ -296,6 +332,72 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("cateringTitleRus", tableName: "Modules", bundle: bundle, comment: "")
+      }
+
+      fileprivate init() {}
+    }
+
+    /// This `R.string.services` struct is generated, and contains static references to 4 localization keys.
+    struct services {
+      /// Value: NewsData
+      static let newsData = Rswift.StringResource(key: "newsData", tableName: "Services", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: photoPath
+      static let photoPath = Rswift.StringResource(key: "photoPath", tableName: "Services", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: text
+      static let text = Rswift.StringResource(key: "text", tableName: "Services", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: title
+      static let title = Rswift.StringResource(key: "title", tableName: "Services", bundle: R.hostingBundle, locales: [], comment: nil)
+
+      /// Value: NewsData
+      static func newsData(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("newsData", tableName: "Services", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Services", preferredLanguages: preferredLanguages) else {
+          return "newsData"
+        }
+
+        return NSLocalizedString("newsData", tableName: "Services", bundle: bundle, comment: "")
+      }
+
+      /// Value: photoPath
+      static func photoPath(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("photoPath", tableName: "Services", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Services", preferredLanguages: preferredLanguages) else {
+          return "photoPath"
+        }
+
+        return NSLocalizedString("photoPath", tableName: "Services", bundle: bundle, comment: "")
+      }
+
+      /// Value: text
+      static func text(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("text", tableName: "Services", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Services", preferredLanguages: preferredLanguages) else {
+          return "text"
+        }
+
+        return NSLocalizedString("text", tableName: "Services", bundle: bundle, comment: "")
+      }
+
+      /// Value: title
+      static func title(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("title", tableName: "Services", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Services", preferredLanguages: preferredLanguages) else {
+          return "title"
+        }
+
+        return NSLocalizedString("title", tableName: "Services", bundle: bundle, comment: "")
       }
 
       fileprivate init() {}

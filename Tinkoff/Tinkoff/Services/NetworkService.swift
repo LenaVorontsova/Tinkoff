@@ -13,21 +13,26 @@ final class NetworkService {
     var baseURL = "http://92.55.39.194:5000/api/"
     
     func getInfoNews(endPoint: String,
-                     completion: @escaping (Result<Response<[NewsNetwork]>, AFError>) -> Void) {
+                     completion: @escaping (Result<NewsNetwork, Error>) -> Void) {
         AF.request(baseURL + endPoint,
                    method: .get)
-        .responseDecodable(of: Response<[NewsNetwork]>.self) { response in
-            completion(response.result)
-        }
+        .responseData(completionHandler: { data in
+            do {
+                let newsNetwork = try JSONDecoder().decode(NewsNetwork.self, from: data.data!)
+                completion(.success(newsNetwork))
+            } catch {
+                completion(.failure(error))
+            }
+        })
     }
     
-    func getInfoAttractions(endPoint: String,
-                            completion: @escaping (Result<Response<[AttractionNetwork]>, AFError>) -> Void) {
-        AF.request(
-            baseURL + endPoint,
-            method: .get)
-            .responseDecodable(of: Response<[AttractionNetwork]>.self) { response in
-                completion(response.result)
-            }
-    }
+//    func getInfoAttractions(endPoint: String,
+//                            completion: @escaping (Result<Response<[AttractionNetwork]>, AFError>) -> Void) {
+//        AF.request(
+//            baseURL + endPoint,
+//            method: .get)
+//            .responseDecodable(of: Response<[AttractionNetwork]>.self) { response in
+//                completion(response.result)
+//            }
+//    }
 }

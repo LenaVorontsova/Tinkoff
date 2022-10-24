@@ -5,3 +5,8 @@
   Created by Lena Vorontsova on 24.10.2022.
   
 */
+"newsData" = "NewsData";
+
+"title" = "title";
+"text" = "text";
+"photoPath" = "photoPath";

@@ -10,7 +10,7 @@ import UIKit
 
 enum ConstantsDetail {
     static let sizeAvatar = 200
-    static let topAvatar = 10
+    static let topAndBottom = 10
     static let offsetAvatar = 20
     static let offsetStack = 30
     static let spacingStack = 5
@@ -22,12 +22,27 @@ final class NewsDetailViewController: UIViewController {
         return image
     }()
     
-    private var stackView: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.spacing = CGFloat(ConstantsDetail.spacingStack)
-        return stack
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 28)
+        label.textAlignment = .center
+        return label
     }()
+    
+    private lazy var textLabel: UITextView = {
+        let textView = UITextView()
+        textView.font = .systemFont(ofSize: 20)
+        textView.textAlignment = .center
+        textView.backgroundColor = R.color.tinkoffGray()
+        return textView
+    }()
+    
+//    private var stackView: UIStackView = {
+//        let stack = UIStackView()
+//        stack.axis = .vertical
+//        stack.spacing = CGFloat(ConstantsDetail.spacingStack)
+//        return stack
+//    }()
     
     let viewModel: DetailViewModelProtocol
     
@@ -48,30 +63,39 @@ final class NewsDetailViewController: UIViewController {
     }
     
     private func addTitle() {
-        guard let labels = viewModel.titleLabel else { return }
-        for text in labels {
-            let label = UILabel()
-            label.text = text
-            label.font = .systemFont(ofSize: 28)
-            label.textAlignment = .center
-            stackView.addArrangedSubview(label)
-        }
+//        guard let labels = viewModel.titleLabel else { return }
+//        for text in labels {
+//            let label = UILabel()
+//            label.text = text
+//            label.font = .systemFont(ofSize: 28)
+//            label.textAlignment = .center
+//            stackView.addArrangedSubview(label)
+//        }
         newsImage.image = R.image.tinkoffIcon()
+        titleLabel.text = viewModel.titleLabel
+        textLabel.text = viewModel.textLabel
     }
     
     private func configureConstraints() {
         self.view.addSubview(newsImage)
-        self.view.addSubview(stackView)
+        self.view.addSubview(titleLabel)
+        self.view.addSubview(textLabel)
         newsImage.snp.makeConstraints {
             $0.height.width.equalTo(ConstantsDetail.sizeAvatar)
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.topAvatar)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.topAndBottom)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.offsetAvatar)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-ConstantsDetail.offsetAvatar)
         }
-        stackView.snp.makeConstraints {
-            $0.top.equalTo(newsImage.snp.bottom).offset(ConstantsDetail.topAvatar)
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(newsImage.snp.bottom).offset(ConstantsDetail.topAndBottom)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.offsetStack)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-ConstantsDetail.offsetAvatar)
+        }
+        textLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(ConstantsDetail.spacingStack)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.offsetStack)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-ConstantsDetail.offsetAvatar)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-ConstantsDetail.topAndBottom)
         }
     }
 }

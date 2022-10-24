@@ -9,8 +9,11 @@ import Foundation
 import UIKit
 
 enum SplashScreenBuilder {
-    static func build(presenter: SplashScreenPresenting) -> UIViewController {
-        let presenter: SplashScreenPresenting = SplashScreenPresenter()
+    static func build(presenter: SplashScreenPresenting,
+                      network: NetworkService,
+                      dataService: IDataService) -> UIViewController {
+        let presenter: SplashScreenPresenting = SplashScreenPresenter(network: network,
+                                                                      dataService: dataService)
         let vc = SplashScreenViewController(presenter: presenter)
         presenter.controller = vc
         return vc

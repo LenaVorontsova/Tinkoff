@@ -10,5 +10,6 @@ import UIKit
 
 protocol DetailViewModelProtocol {
     var image: UIImage? { get }
-    var titleLabel: [String]? { get }
+    var titleLabel: String? { get }
+    var textLabel: String? { get }
 }

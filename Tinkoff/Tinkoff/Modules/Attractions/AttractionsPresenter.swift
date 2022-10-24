@@ -12,7 +12,7 @@ protocol AttractionsPresenting: AnyObject {
     var attractions: [Attraction] { get set }
     var attractionsSearch: [Attraction] { get set }
     func fillInAttractions()
-    func pathAttraction(indexPath: IndexPath) -> DetailViewModelProtocol
+    func pathAttraction(indexPath: IndexPath) -> AttractionsViewModel
 }
 
 final class AttractionsPresenter: AttractionsPresenting {
@@ -31,7 +31,7 @@ final class AttractionsPresenter: AttractionsPresenting {
         self.controller?.reloadTable()
     }
     
-    func pathAttraction(indexPath: IndexPath) -> DetailViewModelProtocol {
+    func pathAttraction(indexPath: IndexPath) -> AttractionsViewModel {
         return AttractionsViewModel(attraction: attractionsSearch[indexPath.row])
     }
 }

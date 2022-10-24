@@ -15,14 +15,22 @@ protocol SplashScreenPresenting: AnyObject {
 }
 
 final class SplashScreenPresenter: SplashScreenPresenting {
+    let network: NetworkService
+    let dataService: IDataService
     weak var controller: SplashScreenViewController?
     
+    init(network: NetworkService, dataService: IDataService) {
+        self.network = network
+        self.dataService = dataService
+    }
+    
     func getInfo() {
+        dataService.loadData()
         self.showTabBar()
     }
     
     func showTabBar() {
-        let tabBarVC = TabBarViewController()
+        let tabBarVC = TabBarViewController(dataService: dataService)
         tabBarVC.modalPresentationStyle = .fullScreen
         controller?.present(tabBarVC, animated: false)
     }

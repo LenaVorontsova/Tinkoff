@@ -21,9 +21,9 @@ final class AttractionDetailViewController: UIViewController {
         return stack
     }()
     
-    let viewModel: DetailViewModelProtocol
+    let viewModel: AttractionsViewModel
     
-    init(viewModel: DetailViewModelProtocol) {
+    init(viewModel: AttractionsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -56,12 +56,12 @@ final class AttractionDetailViewController: UIViewController {
         self.view.addSubview(stackView)
         attractionImage.snp.makeConstraints {
             $0.height.width.equalTo(ConstantsDetail.sizeAvatar)
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.topAvatar)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.topAndBottom)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.offsetAvatar)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-ConstantsDetail.offsetAvatar)
         }
         stackView.snp.makeConstraints {
-            $0.top.equalTo(attractionImage.snp.bottom).offset(ConstantsDetail.topAvatar)
+            $0.top.equalTo(attractionImage.snp.bottom).offset(ConstantsDetail.topAndBottom)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.offsetStack)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-ConstantsDetail.offsetAvatar)
         }

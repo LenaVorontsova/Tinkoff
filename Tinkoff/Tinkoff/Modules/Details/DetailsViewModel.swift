@@ -11,13 +11,13 @@ import UIKit
 final class NewsViewModel: DetailViewModelProtocol {
     private var news: News
     var image: UIImage? {
-        news.image
+        news.photoPath
     }
-    var titleLabel: [String]? {
-        var arr = [String]()
-        arr.append(news.newsTitle ?? "")
-        arr.append(news.newsText ?? "")
-        return arr
+    var titleLabel: String? {
+        news.newsTitle
+    }
+    var textLabel: String? {
+        news.newsText
     }
     
     required init(news: News) {
@@ -25,7 +25,7 @@ final class NewsViewModel: DetailViewModelProtocol {
     }
 }
 
-final class AttractionsViewModel: DetailViewModelProtocol {
+final class AttractionsViewModel {
     private var attraction: Attraction
     var image: UIImage? {
         R.image.tinkoffIcon()

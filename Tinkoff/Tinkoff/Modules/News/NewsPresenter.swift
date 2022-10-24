@@ -11,22 +11,28 @@ import UIKit
 protocol NewsPresenting: AnyObject {
     var news: [News] { get set }
     var newsSearch: [News] { get set }
-    func fillInNews()
     func pathNews(indexPath: IndexPath) -> DetailViewModelProtocol
+    func loadData()
+    func getInfoNews()
 }
 
 final class NewsPresenter: NewsPresenting {
     var news: [News] = []
     var newsSearch: [News] = []
     weak var controller: NewsViewController?
+    let dataService: IDataService
     
-    func fillInNews() {
-        for _ in 0...10 {
-            news.append(News(image: R.image.tinkoffIcon(),
-                             newsTitle: "Title text",
-                             newsText: "Full text"))
-            newsSearch = news
-        }
+    init(dataService: IDataService) {
+        self.dataService = dataService
+    }
+    
+    func loadData() {
+        dataService.loadData()
+    }
+    
+    func getInfoNews() {
+        self.news = self.dataService.fetchNewsFromCoreData()
+        self.newsSearch = self.news
         self.controller?.reloadTable()
     }
     
