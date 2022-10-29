@@ -36,7 +36,7 @@ final class AttractionDetailViewController: UIViewController {
         super.viewDidLoad()
         addTitle()
         configureConstraints()
-        view.backgroundColor = R.color.tinkoffGray()
+        view.backgroundColor = R.color.tinkoffLightGray()
     }
     
     private func addTitle() {

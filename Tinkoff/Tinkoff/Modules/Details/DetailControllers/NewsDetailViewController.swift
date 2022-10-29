@@ -33,16 +33,9 @@ final class NewsDetailViewController: UIViewController {
         let textView = UITextView()
         textView.font = .systemFont(ofSize: 20)
         textView.textAlignment = .center
-        textView.backgroundColor = R.color.tinkoffGray()
+        textView.backgroundColor = R.color.tinkoffLightGray()
         return textView
     }()
-    
-//    private var stackView: UIStackView = {
-//        let stack = UIStackView()
-//        stack.axis = .vertical
-//        stack.spacing = CGFloat(ConstantsDetail.spacingStack)
-//        return stack
-//    }()
     
     let viewModel: DetailViewModelProtocol
     
@@ -59,18 +52,10 @@ final class NewsDetailViewController: UIViewController {
         super.viewDidLoad()
         addTitle()
         configureConstraints()
-        view.backgroundColor = R.color.tinkoffGray()
+        view.backgroundColor = R.color.tinkoffLightGray()
     }
     
     private func addTitle() {
-//        guard let labels = viewModel.titleLabel else { return }
-//        for text in labels {
-//            let label = UILabel()
-//            label.text = text
-//            label.font = .systemFont(ofSize: 28)
-//            label.textAlignment = .center
-//            stackView.addArrangedSubview(label)
-//        }
         newsImage.image = R.image.tinkoffIcon()
         titleLabel.text = viewModel.titleLabel
         textLabel.text = viewModel.textLabel

@@ -11,6 +11,8 @@ import SnapKit
 class NewsViewController: UIViewController {
     private var tableView: UITableView = {
         let table = UITableView()
+        // table.backgroundView?.backgroundColor = R.color.tinkoffLightGray()
+        table.backgroundColor = .white
         return table
     }()
     private var searchBar: UISearchBar = {
@@ -38,7 +40,7 @@ class NewsViewController: UIViewController {
         presenter.getInfoNews()
         self.tableView.register(NewsTableViewCell.self,
                                 forCellReuseIdentifier: NewsTableViewCell.identifier)
-        view.backgroundColor = R.color.tinkoffLightGray()
+        view.backgroundColor = .white
         self.title = R.string.modules.newsTitleRus()
     }
     
@@ -62,22 +64,9 @@ class NewsViewController: UIViewController {
 }
 
 extension NewsViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return presenter.newsSearch.count
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 10)) as UIView
-        view.backgroundColor = .clear
-        return view
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 10
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return presenter.newsSearch.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -87,7 +76,8 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate, UISear
         }
         let cellModel = NewsTableViewCellFactory.cellModel(presenter.newsSearch[indexPath.row])
         cell.config(with: cellModel)
-        cell.newsImage.image = presenter.newsSearch[indexPath.row].photoPath
+        cell.newsImage.image = R.image.tinkoffIcon()
+        // cell.newsImage.image = presenter.newsSearch[indexPath.row].photoPath
         return cell
     }
     
