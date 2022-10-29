@@ -55,6 +55,7 @@ final class NewsTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = R.color.tinkoffGray()
+        contentView.layer.cornerRadius = 15
         configureConstraints()
     }
     

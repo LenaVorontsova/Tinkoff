@@ -38,7 +38,7 @@ class NewsViewController: UIViewController {
         presenter.getInfoNews()
         self.tableView.register(NewsTableViewCell.self,
                                 forCellReuseIdentifier: NewsTableViewCell.identifier)
-        view.backgroundColor = R.color.tinkoffGray()
+        view.backgroundColor = R.color.tinkoffLightGray()
         self.title = R.string.modules.newsTitleRus()
     }
     
@@ -62,8 +62,22 @@ class NewsViewController: UIViewController {
 }
 
 extension NewsViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return presenter.newsSearch.count
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 10)) as UIView
+        view.backgroundColor = .clear
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
