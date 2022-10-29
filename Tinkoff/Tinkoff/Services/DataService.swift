@@ -40,7 +40,7 @@ final class DataService: IDataService {
             topWindow = nil
         })
         topWindow?.makeKeyAndVisible()
-        topWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+        topWindow?.rootViewController?.present(alert, animated: false, completion: nil)
     }
     
     func loadData() {

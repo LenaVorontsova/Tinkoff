@@ -16,22 +16,21 @@ struct News {
 
 // MARK: - NewsNetrorkElement
 struct NewsNetworkElement: Codable {
-    let id: Int
-    let title, text: String
-    let photoPath: String?
-    let office: Office
+    let id: Int?
+    let title, text, photoPath: String?
+    let office: Office?
     let tag: Tag?
-    let dateOfCreation: String
+    let dateOfCreation: String?
 }
 
 struct Office: Codable {
-    let id, city: Int
-    let adress: String
+    let id, city: Int?
+    let adress: String?
 }
 
 struct Tag: Codable {
-    let id: Int
-    let tag: String
+    let id: Int?
+    let tag: String?
 }
 
 typealias NewsNetwork = [NewsNetworkElement]

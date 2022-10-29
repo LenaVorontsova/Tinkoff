@@ -10,7 +10,17 @@ import UIKit
 import Alamofire
 
 final class NetworkService {
-    var baseURL = "http://92.55.39.194:5000/api/"
+    var baseURL = "http://217.114.156.125:5000/api/"
+    
+//    func getInfoNews(endPoint: String,
+//                     completion: @escaping (Result<Response<[NewsNetworkElement]>, AFError>) -> Void) {
+//        AF.request(
+//            baseURL + endPoint,
+//            method: .get)
+//        .responseDecodable(of: Response<[NewsNetworkElement]>.self) { response in
+//            completion(response.result)
+//        }
+//    }
     
     func getInfoNews(endPoint: String,
                      completion: @escaping (Result<NewsNetwork, Error>) -> Void) {
@@ -18,7 +28,8 @@ final class NetworkService {
                    method: .get)
         .responseData(completionHandler: { data in
             do {
-                let newsNetwork = try JSONDecoder().decode(NewsNetwork.self, from: data.data!)
+                guard let newData = data.data else { return }
+                let newsNetwork = try JSONDecoder().decode(NewsNetwork.self, from: newData)
                 completion(.success(newsNetwork))
             } catch {
                 completion(.failure(error))
@@ -36,3 +47,9 @@ final class NetworkService {
 //            }
 //    }
 }
+
+// extension NetworkService {
+//    struct Response<T: Decodable>: Decodable {
+//        let results: T
+//    }
+// }

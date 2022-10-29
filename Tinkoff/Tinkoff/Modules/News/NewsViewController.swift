@@ -84,7 +84,7 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate, UISear
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewModel = presenter.pathNews(indexPath: indexPath)
         let controller = NewsDetailViewController(viewModel: viewModel)
-        self.navigationController?.pushViewController(controller, animated: true)
+        self.navigationController?.pushViewController(controller, animated: false)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

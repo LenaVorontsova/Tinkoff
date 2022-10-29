@@ -83,7 +83,7 @@ extension AttractionsViewController: UITableViewDataSource, UITableViewDelegate,
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewModel = presenter.pathAttraction(indexPath: indexPath)
         let controller = AttractionDetailViewController(viewModel: viewModel)
-        self.navigationController?.pushViewController(controller, animated: true)
+        self.navigationController?.pushViewController(controller, animated: false)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
