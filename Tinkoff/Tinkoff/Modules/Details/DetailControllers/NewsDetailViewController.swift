@@ -32,7 +32,7 @@ final class NewsDetailViewController: UIViewController {
     private lazy var textLabel: UITextView = {
         let textView = UITextView()
         textView.font = .systemFont(ofSize: 20)
-        textView.textAlignment = .center
+        textView.textAlignment = .natural
         textView.backgroundColor = R.color.tinkoffLightGray()
         return textView
     }()

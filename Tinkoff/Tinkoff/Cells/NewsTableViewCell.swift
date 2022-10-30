@@ -42,13 +42,14 @@ final class NewsTableViewCell: UITableViewCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 28)
+        label.font = .systemFont(ofSize: 18)
         return label
     }()
     
     private lazy var newsTextLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 17)
+        label.font = .systemFont(ofSize: 16)
+        label.numberOfLines = 4
         return label
     }()
     

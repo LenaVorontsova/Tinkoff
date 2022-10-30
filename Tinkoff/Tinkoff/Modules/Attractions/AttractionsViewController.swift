@@ -61,22 +61,8 @@ final class AttractionsViewController: UIViewController {
 }
 
 extension AttractionsViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 10)) as UIView
-        view.backgroundColor = .white
-        return view
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 10
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return presenter.attractionsSearch.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

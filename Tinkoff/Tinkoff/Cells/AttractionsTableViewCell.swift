@@ -29,13 +29,14 @@ final class AttractionsTableViewCell: UITableViewCell {
     
     private lazy var attractionTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 28)
+        label.font = .systemFont(ofSize: 20)
         return label
     }()
     
     private lazy var attractionAddressLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 17)
+        label.font = .systemFont(ofSize: 16)
+        label.numberOfLines = 4
         return label
     }()
     
