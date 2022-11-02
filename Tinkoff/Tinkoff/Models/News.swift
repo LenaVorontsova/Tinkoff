@@ -12,6 +12,7 @@ struct News {
     var photoPath: UIImage?
     var newsTitle: String?
     var newsText: String?
+    var newsDate: String?
 }
 
 // MARK: - NewsNetrorkElement

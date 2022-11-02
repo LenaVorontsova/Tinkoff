@@ -12,13 +12,13 @@ import Rswift
 
 struct NewsTableViewCellModel {
     let newsTitle: String?
-    let newsTextTitle: String?
+    let newsDateTitle: String?
 }
 
 enum NewsTableViewCellFactory {
     static func cellModel(_ inf: News) -> NewsTableViewCellModel {
         NewsTableViewCellModel(newsTitle: inf.newsTitle,
-                               newsTextTitle: inf.newsText)
+                               newsDateTitle: inf.newsDate)
     }
 }
 
@@ -42,14 +42,15 @@ final class NewsTableViewCell: UITableViewCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 18)
+        label.font = .systemFont(ofSize: 15, weight: .medium)
+        label.numberOfLines = 5
         return label
     }()
     
-    private lazy var newsTextLabel: UILabel = {
+    private lazy var newsDateLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16)
-        label.numberOfLines = 4
+        label.font = .systemFont(ofSize: 12)
+        label.textColor = .gray
         return label
     }()
     
@@ -67,28 +68,29 @@ final class NewsTableViewCell: UITableViewCell {
     private func configureConstraints() {
         contentView.addSubview(newsImage)
         contentView.addSubview(titleLabel)
-        contentView.addSubview(newsTextLabel)
+        contentView.addSubview(newsDateLabel)
         newsImage.snp.makeConstraints {
             $0.width.height.equalTo(ConstantsCell.sizeImage)
             $0.top.equalTo(contentView.safeAreaLayoutGuide.snp.top).offset(ConstantsCell.topAndLeadImage)
             $0.leading.equalTo(contentView.safeAreaLayoutGuide.snp.leading)
-                .offset(ConstantsCell.topAndLeadImage)
+                .offset(ConstantsCell.offsetLabels)
         }
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(ConstantsCell.topAndLeadImage)
             $0.leading.equalTo(newsImage.snp.trailing).offset(ConstantsCell.offsetLabels)
             $0.trailing.equalToSuperview().offset(-ConstantsCell.offsetLabels)
         }
-        newsTextLabel.snp.makeConstraints {
+        newsDateLabel.snp.makeConstraints {
             $0.leading.equalTo(newsImage.snp.trailing).offset(ConstantsCell.offsetLabels)
             $0.trailing.equalToSuperview().offset(-ConstantsCell.offsetLabels)
-            $0.top.equalTo(titleLabel.snp.bottom).offset(ConstantsCell.topLabels)
+            $0.bottom.equalTo(contentView.snp.bottom).offset(-ConstantsCell.topLabels)
         }
     }
     
     func config(with model: NewsTableViewCellModel) {
         titleLabel.text = model.newsTitle
-        newsTextLabel.text = model.newsTextTitle
+        var dateText = model.newsDateTitle?.replacingOccurrences(of: "T", with: " ")
+        newsDateLabel.text = dateText
     }
 }
 

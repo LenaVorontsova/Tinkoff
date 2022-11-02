@@ -12,7 +12,7 @@ enum ConstantsDetail {
     static let sizeAvatar = 200
     static let topAndBottom = 10
     static let offsetAvatar = 20
-    static let offsetStack = 30
+    static let offsetStack = 15
     static let spacingStack = 5
 }
 
@@ -24,15 +24,17 @@ final class NewsDetailViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 28)
-        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.textAlignment = .justified
+        label.numberOfLines = 5
         return label
     }()
     
     private lazy var textLabel: UITextView = {
         let textView = UITextView()
-        textView.font = .systemFont(ofSize: 20)
-        textView.textAlignment = .natural
+        textView.font = .systemFont(ofSize: 18)
+        textView.autocapitalizationType = .words
+        textView.textAlignment = .justified
         textView.backgroundColor = R.color.tinkoffLightGray()
         return textView
     }()

@@ -77,7 +77,7 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate, UISear
         let cellModel = NewsTableViewCellFactory.cellModel(presenter.newsSearch[indexPath.row])
         cell.config(with: cellModel)
         cell.newsImage.image = R.image.tinkoffIcon()
-        // cell.newsImage.image = presenter.newsSearch[indexPath.row].photoPath
+//        cell.newsImage.image = presenter.newsSearch[indexPath.row].photoPath
         return cell
     }
     

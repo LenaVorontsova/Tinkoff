@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 final class NetworkService {
-    var baseURL = "http://217.114.156.125:5000/api/"
+    var baseURL = "http://217.114.156.125:5000/api"
     
 //    func getInfoNews(endPoint: String,
 //                     completion: @escaping (Result<Response<[NewsNetworkElement]>, AFError>) -> Void) {
@@ -24,7 +24,7 @@ final class NetworkService {
     
     func getInfoNews(endPoint: String,
                      completion: @escaping (Result<NewsNetwork, Error>) -> Void) {
-        AF.request(baseURL + endPoint,
+        AF.request(baseURL + "/" + endPoint,
                    method: .get)
         .responseData(completionHandler: { data in
             do {

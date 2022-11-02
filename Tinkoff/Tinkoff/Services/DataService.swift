@@ -71,9 +71,12 @@ final class DataService: IDataService {
             let news = NSManagedObject(entity: entityNews, insertInto: self.context)
             news.setValue(element.title, forKey: R.string.services.title())
             news.setValue(element.text, forKey: R.string.services.text())
-            if let urlString = element.photoPath,
-               let url = URL(string: urlString),
-               let data = try? Data(contentsOf: url) {
+            news.setValue(element.dateOfCreation, forKey: "dateOfCreation")
+            // let newUrl: String? = network.baseURL + (element.photoPath ?? "")
+            let newUrl = network.baseURL + (element.photoPath ?? "")
+            guard let url = URL(string: newUrl) else { return }
+            DispatchQueue.global().async {
+                guard let data = try? Data(contentsOf: url) else { return }
                 news.setValue(data, forKey: R.string.services.photoPath())
             }
             do {
@@ -89,9 +92,10 @@ final class DataService: IDataService {
         do {
             let newArr = try context!.fetch(NewsData.fetchRequest())
             for element in newArr {
-                var news = News(newsTitle: nil, newsText: nil)
+                var news = News(photoPath: nil, newsTitle: nil, newsText: nil, newsDate: nil)
                 news.newsTitle = element.title
                 news.newsText = element.text
+                news.newsDate = element.dateOfCreation
                 if let data = element.photoPath {
                     news.photoPath = UIImage(data: data)
                 }
