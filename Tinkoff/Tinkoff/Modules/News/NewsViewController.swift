@@ -64,9 +64,22 @@ class NewsViewController: UIViewController {
 }
 
 extension NewsViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return presenter.newsSearch.count
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.newsSearch.count
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat(10)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -74,7 +87,7 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate, UISear
                                                        for: indexPath) as? NewsTableViewCell else {
             return UITableViewCell()
         }
-        let cellModel = NewsTableViewCellFactory.cellModel(presenter.newsSearch[indexPath.row])
+        let cellModel = NewsTableViewCellFactory.cellModel(presenter.newsSearch[indexPath.section])
         cell.config(with: cellModel)
         cell.newsImage.image = R.image.tinkoffIcon()
 //        cell.newsImage.image = presenter.newsSearch[indexPath.row].photoPath

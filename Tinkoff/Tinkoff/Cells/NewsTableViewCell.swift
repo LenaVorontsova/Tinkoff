@@ -58,6 +58,9 @@ final class NewsTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = R.color.tinkoffLightGray()
         contentView.layer.cornerRadius = 15
+        contentView.layer.borderWidth = 0.5
+        contentView.layer.borderColor = UIColor.gray.cgColor
+        contentView.clipsToBounds = true
         configureConstraints()
     }
     
@@ -89,7 +92,7 @@ final class NewsTableViewCell: UITableViewCell {
     
     func config(with model: NewsTableViewCellModel) {
         titleLabel.text = model.newsTitle
-        var dateText = model.newsDateTitle?.replacingOccurrences(of: "T", with: " ")
+        let dateText = model.newsDateTitle?.replacingOccurrences(of: "T", with: " ")
         newsDateLabel.text = dateText
     }
 }
