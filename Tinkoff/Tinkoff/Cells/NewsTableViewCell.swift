@@ -59,7 +59,7 @@ final class NewsTableViewCell: UITableViewCell {
         contentView.backgroundColor = R.color.tinkoffLightGray()
         contentView.layer.cornerRadius = 15
         contentView.layer.borderWidth = 0.5
-        contentView.layer.borderColor = UIColor.gray.cgColor
+        contentView.layer.borderColor = UIColor.lightGray.cgColor
         contentView.clipsToBounds = true
         configureConstraints()
     }
