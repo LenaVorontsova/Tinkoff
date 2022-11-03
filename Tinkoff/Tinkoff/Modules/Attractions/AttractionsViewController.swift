@@ -61,8 +61,22 @@ final class AttractionsViewController: UIViewController {
 }
 
 extension AttractionsViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return presenter.attractionsSearch.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat(10)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,9 +84,9 @@ extension AttractionsViewController: UITableViewDataSource, UITableViewDelegate,
                                                        for: indexPath) as? AttractionsTableViewCell else {
             return UITableViewCell()
         }
-        let cellModel = AttractionTableViewCellFactory.cellModel(presenter.attractionsSearch[indexPath.row])
+        let cellModel = AttractionTableViewCellFactory.cellModel(presenter.attractionsSearch[indexPath.section])
         cell.config(with: cellModel)
-        cell.attractionImage.image = presenter.attractionsSearch[indexPath.row].image
+        cell.attractionImage.image = presenter.attractionsSearch[indexPath.section].image
         return cell
     }
     

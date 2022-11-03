@@ -12,16 +12,6 @@ import Alamofire
 final class NetworkService {
     var baseURL = "http://217.114.156.125:5000/api"
     
-//    func getInfoNews(endPoint: String,
-//                     completion: @escaping (Result<Response<[NewsNetworkElement]>, AFError>) -> Void) {
-//        AF.request(
-//            baseURL + endPoint,
-//            method: .get)
-//        .responseDecodable(of: Response<[NewsNetworkElement]>.self) { response in
-//            completion(response.result)
-//        }
-//    }
-    
     func getInfoNews(endPoint: String,
                      completion: @escaping (Result<NewsNetwork, Error>) -> Void) {
         AF.request(baseURL + "/" + endPoint,
@@ -47,9 +37,3 @@ final class NetworkService {
 //            }
 //    }
 }
-
-// extension NetworkService {
-//    struct Response<T: Decodable>: Decodable {
-//        let results: T
-//    }
-// }

@@ -29,14 +29,15 @@ final class AttractionsTableViewCell: UITableViewCell {
     
     private lazy var attractionTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 20)
+        label.font = .systemFont(ofSize: 15, weight: .medium)
+        label.numberOfLines = 5
         return label
     }()
     
     private lazy var attractionAddressLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16)
-        label.numberOfLines = 4
+        label.font = .systemFont(ofSize: 12)
+        label.textColor = .gray
         return label
     }()
     
@@ -44,6 +45,9 @@ final class AttractionsTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = R.color.tinkoffLightGray()
         contentView.layer.cornerRadius = 15
+        contentView.layer.borderWidth = 0.5
+        contentView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.clipsToBounds = true
         configureConstraints()
     }
     

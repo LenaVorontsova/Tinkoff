@@ -11,7 +11,6 @@ import SnapKit
 class NewsViewController: UIViewController {
     private var tableView: UITableView = {
         let table = UITableView()
-        // table.backgroundView?.backgroundColor = R.color.tinkoffLightGray()
         table.backgroundColor = .white
         return table
     }()

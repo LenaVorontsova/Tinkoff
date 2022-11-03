@@ -9,6 +9,12 @@ import Foundation
 import UIKit
 import MapKit
 
+struct Stadium {
+  var name: String
+  var lattitude: CLLocationDegrees
+  var longtitude: CLLocationDegrees
+}
+
 final class CateringViewController: UIViewController {
     lazy var mapView: MKMapView = {
         let map = MKMapView()
@@ -33,6 +39,15 @@ final class CateringViewController: UIViewController {
         self.title = "Питание"
         presenter.checkLocationServices()
     }
+    
+//    func fetchStadiumsOnMap(_ stadiums: [Stadium]) {
+//      for stadium in stadiums {
+//        let annotations = MKPointAnnotation()
+//        annotations.title = stadium.name
+//        annotations.coordinate = CLLocationCoordinate2D(latitude: stadium.lattitude, longitude: stadium.longtitude)
+//        mapView.addAnnotation(annotations)
+//      }
+//    }
     
     private func configureConstraints() {
         view.addSubview(mapView)
