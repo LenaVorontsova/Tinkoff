@@ -19,6 +19,7 @@ class NewsViewController: UIViewController {
         return search
     }()
     private let presenter: NewsPresenting
+    private lazy var refreshControl = UIRefreshControl()
     
     init(presenter: NewsPresenting) {
         self.presenter = presenter
@@ -41,6 +42,20 @@ class NewsViewController: UIViewController {
                                 forCellReuseIdentifier: NewsTableViewCell.identifier)
         view.backgroundColor = .white
         self.title = R.string.modules.newsTitleRus()
+        configureRefresh()
+    }
+    
+    private func configureRefresh() {
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+    }
+    
+    @objc
+    func refreshData() {
+        presenter.loadData()
+        DispatchQueue.main.async {
+            self.refreshControl.endRefreshing()
+        }
     }
     
     private func configureConstraints() {

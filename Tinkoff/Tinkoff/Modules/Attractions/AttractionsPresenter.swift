@@ -12,7 +12,7 @@ protocol AttractionsPresenting: AnyObject {
     var attractions: [Attraction] { get set }
     var attractionsSearch: [Attraction] { get set }
     func fillInAttractions()
-    func pathAttraction(indexPath: IndexPath) -> AttractionsViewModel
+    func pathAttraction(indexPath: IndexPath) -> AttractionsViewModel    
 }
 
 final class AttractionsPresenter: AttractionsPresenting {
