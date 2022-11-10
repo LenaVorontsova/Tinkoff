@@ -68,7 +68,8 @@ class NewsViewController: UIViewController {
         tableView.snp.makeConstraints {
             $0.top.equalTo(searchBar.snp.bottom)
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-            $0.trailing.leading.equalToSuperview()
+            $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(ConstantsCell.topAndLeadImage)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-ConstantsCell.topAndLeadImage)
         }
     }
     

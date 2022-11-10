@@ -37,6 +37,6 @@ final class NewsPresenter: NewsPresenting {
     }
     
     func pathNews(indexPath: IndexPath) -> DetailViewModelProtocol {
-        return NewsViewModel(news: newsSearch[indexPath.row])
+        return NewsViewModel(news: newsSearch[indexPath.section])
     }
 }

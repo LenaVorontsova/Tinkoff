@@ -34,7 +34,7 @@ final class NewsDetailViewController: UIViewController {
         let textView = UITextView()
         textView.font = .systemFont(ofSize: 18)
         textView.autocapitalizationType = .words
-        textView.textAlignment = .justified
+        textView.textAlignment = .left
         textView.backgroundColor = R.color.tinkoffLightGray()
         return textView
     }()

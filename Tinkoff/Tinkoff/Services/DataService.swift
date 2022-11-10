@@ -14,7 +14,9 @@ protocol IDataService {
     func loadData()
     func showAlert(error: Error)
     func saveToCoreDataNews(newsArray: NewsNetwork)
+    func saveToCoreDataMapPoints(newArray: MapNetwork)
     func fetchNewsFromCoreData() -> [News]
+    func fetchMapPointsCoreData() -> [Map]
     func deleteAllData(_ entity: String)
 }
 
@@ -46,13 +48,27 @@ final class DataService: IDataService {
     func loadData() {
         let infoGroup = DispatchGroup()
         let queue1 = DispatchQueue.global(qos: .utility)
-        // let queue2 = DispatchQueue.global(qos: .utility)
+        let queue2 = DispatchQueue.global(qos: .utility)
         queue1.async(group: infoGroup) {
             infoGroup.enter()
             self.network.getInfoNews(endPoint: EndPoints.Posts.rawValue) { [weak self] result in
                 switch result {
                 case .success(let serverData):
                     self?.saveToCoreDataNews(newsArray: serverData)
+                    infoGroup.leave()
+                case .failure(let error):
+                    infoGroup.leave()
+                    self?.showAlert(error: error)
+                    print(error)
+                }
+            }
+        }
+        queue2.async(group: infoGroup) {
+            infoGroup.enter()
+            self.network.getInfoMapPoints(endPoint: EndPoints.MapPoints.rawValue) { [weak self] result in
+                switch result {
+                case .success(let serverData):
+                    self?.saveToCoreDataMapPoints(newArray: serverData)
                     infoGroup.leave()
                 case .failure(let error):
                     infoGroup.leave()
@@ -87,6 +103,30 @@ final class DataService: IDataService {
         }
     }
     
+    func saveToCoreDataMapPoints(newArray: MapNetwork) {
+        deleteAllData(R.string.services.mapData())
+        let entityMap = NSEntityDescription.entity(forEntityName: R.string.services.mapData(),
+                                                   in: self.context!)!
+        for element in newArray {
+            let map = NSManagedObject(entity: entityMap, insertInto: self.context)
+            map.setValue(element.lat, forKey: R.string.services.lat())
+            map.setValue(element.lng, forKey: R.string.services.lng())
+            map.setValue(element.title, forKey: R.string.services.title())
+            map.setValue(element.text, forKey: R.string.services.text())
+            let newUrl = network.baseURL + (element.photoPath ?? "")
+            guard let url = URL(string: newUrl) else { return }
+            DispatchQueue.global().async {
+                guard let data = try? Data(contentsOf: url) else { return }
+                map.setValue(data, forKey: R.string.services.photoPath())
+            }
+            do {
+                try self.context!.save()
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+        }
+    }
+    
     func fetchNewsFromCoreData() -> [News] {
         var arr: [News] = []
         do {
@@ -106,6 +146,27 @@ final class DataService: IDataService {
         }
         return arr
     }
+    
+    func fetchMapPointsCoreData() -> [Map] {
+        var arr: [Map] = []
+        do {
+            let newArr = try context!.fetch(MapData.fetchRequest())
+            for element in newArr {
+                var map = Map(lat: nil, lng: nil, title: nil, text: nil, photoPath: nil)
+                map.lat = element.lat
+                map.lng = element.lng
+                map.title = element.title
+                map.text = element.text
+                if let data = element.photoPath {
+                    map.photoPath = UIImage(data: data)
+                }
+                arr.append(map)
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        return arr
+    } 
     
     func deleteAllData(_ entity: String) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)

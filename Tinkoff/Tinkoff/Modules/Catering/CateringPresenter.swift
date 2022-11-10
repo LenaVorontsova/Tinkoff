@@ -24,7 +24,7 @@ final class CateringPresenter: CateringPresenting {
             if CLLocationManager.locationServicesEnabled() {
                 self.checkLocationAuthorization()
             } else {
-                self.showAlert(error: "Проверьте разрешение на использование вашего метсоположения")
+                self.showAlert(error: R.string.alertMessages.checkResolution())
             }
         }
     }
@@ -34,16 +34,16 @@ final class CateringPresenter: CateringPresenting {
         case .authorizedWhenInUse:
             controller!.mapView.showsUserLocation = true
         case .denied:
-            showAlert(error: "Вы запретили использовать ваше местоположение")
+            showAlert(error: R.string.alertMessages.denied())
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
             controller!.mapView.showsUserLocation = true
         case .restricted:
-            showAlert(error: "Определение местоположения ограничено")
+            showAlert(error: R.string.alertMessages.restricted())
         case .authorizedAlways:
             break
         @unknown default:
-            showAlert(error: "Что-то пошло не так")
+            showAlert(error: R.string.alertMessages.somethingWrong())
         }
     }
     

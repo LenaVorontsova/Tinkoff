@@ -218,12 +218,20 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 4 localization tables.
   struct string {
-    /// This `R.string.alertMessages` struct is generated, and contains static references to 2 localization keys.
+    /// This `R.string.alertMessages` struct is generated, and contains static references to 6 localization keys.
     struct alertMessages {
       /// Value: Error
       static let errorTitle = Rswift.StringResource(key: "errorTitle", tableName: "AlertMessages", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: OK
       static let okTitle = Rswift.StringResource(key: "okTitle", tableName: "AlertMessages", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Вы запретили использовать ваше местоположение
+      static let denied = Rswift.StringResource(key: "denied", tableName: "AlertMessages", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Определение местоположения ограничено
+      static let restricted = Rswift.StringResource(key: "restricted", tableName: "AlertMessages", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Проверьте разрешение на использование вашего метсоположения
+      static let checkResolution = Rswift.StringResource(key: "checkResolution", tableName: "AlertMessages", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Что-то пошло не так
+      static let somethingWrong = Rswift.StringResource(key: "somethingWrong", tableName: "AlertMessages", bundle: R.hostingBundle, locales: [], comment: nil)
 
       /// Value: Error
       static func errorTitle(preferredLanguages: [String]? = nil) -> String {
@@ -249,6 +257,58 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("okTitle", tableName: "AlertMessages", bundle: bundle, comment: "")
+      }
+
+      /// Value: Вы запретили использовать ваше местоположение
+      static func denied(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("denied", tableName: "AlertMessages", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "AlertMessages", preferredLanguages: preferredLanguages) else {
+          return "denied"
+        }
+
+        return NSLocalizedString("denied", tableName: "AlertMessages", bundle: bundle, comment: "")
+      }
+
+      /// Value: Определение местоположения ограничено
+      static func restricted(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("restricted", tableName: "AlertMessages", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "AlertMessages", preferredLanguages: preferredLanguages) else {
+          return "restricted"
+        }
+
+        return NSLocalizedString("restricted", tableName: "AlertMessages", bundle: bundle, comment: "")
+      }
+
+      /// Value: Проверьте разрешение на использование вашего метсоположения
+      static func checkResolution(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("checkResolution", tableName: "AlertMessages", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "AlertMessages", preferredLanguages: preferredLanguages) else {
+          return "checkResolution"
+        }
+
+        return NSLocalizedString("checkResolution", tableName: "AlertMessages", bundle: bundle, comment: "")
+      }
+
+      /// Value: Что-то пошло не так
+      static func somethingWrong(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("somethingWrong", tableName: "AlertMessages", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "AlertMessages", preferredLanguages: preferredLanguages) else {
+          return "somethingWrong"
+        }
+
+        return NSLocalizedString("somethingWrong", tableName: "AlertMessages", bundle: bundle, comment: "")
       }
 
       fileprivate init() {}
@@ -356,16 +416,35 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This `R.string.services` struct is generated, and contains static references to 4 localization keys.
+    /// This `R.string.services` struct is generated, and contains static references to 7 localization keys.
     struct services {
+      /// Value: MapData
+      static let mapData = Rswift.StringResource(key: "mapData", tableName: "Services", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: NewsData
       static let newsData = Rswift.StringResource(key: "newsData", tableName: "Services", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: lat
+      static let lat = Rswift.StringResource(key: "lat", tableName: "Services", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: lng
+      static let lng = Rswift.StringResource(key: "lng", tableName: "Services", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: photoPath
       static let photoPath = Rswift.StringResource(key: "photoPath", tableName: "Services", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: text
       static let text = Rswift.StringResource(key: "text", tableName: "Services", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: title
       static let title = Rswift.StringResource(key: "title", tableName: "Services", bundle: R.hostingBundle, locales: [], comment: nil)
+
+      /// Value: MapData
+      static func mapData(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("mapData", tableName: "Services", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Services", preferredLanguages: preferredLanguages) else {
+          return "mapData"
+        }
+
+        return NSLocalizedString("mapData", tableName: "Services", bundle: bundle, comment: "")
+      }
 
       /// Value: NewsData
       static func newsData(preferredLanguages: [String]? = nil) -> String {
@@ -378,6 +457,32 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("newsData", tableName: "Services", bundle: bundle, comment: "")
+      }
+
+      /// Value: lat
+      static func lat(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("lat", tableName: "Services", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Services", preferredLanguages: preferredLanguages) else {
+          return "lat"
+        }
+
+        return NSLocalizedString("lat", tableName: "Services", bundle: bundle, comment: "")
+      }
+
+      /// Value: lng
+      static func lng(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("lng", tableName: "Services", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Services", preferredLanguages: preferredLanguages) else {
+          return "lng"
+        }
+
+        return NSLocalizedString("lng", tableName: "Services", bundle: bundle, comment: "")
       }
 
       /// Value: photoPath

@@ -13,4 +13,5 @@ enum EndPoints: String {
     case Offices
     case Posts
     case Tags
+    case MapPointTypes
 }

@@ -27,13 +27,18 @@ final class NetworkService {
         })
     }
     
-//    func getInfoAttractions(endPoint: String,
-//                            completion: @escaping (Result<Response<[AttractionNetwork]>, AFError>) -> Void) {
-//        AF.request(
-//            baseURL + endPoint,
-//            method: .get)
-//            .responseDecodable(of: Response<[AttractionNetwork]>.self) { response in
-//                completion(response.result)
-//            }
-//    }
+    func getInfoMapPoints(endPoint: String,
+                          completion: @escaping (Result<MapNetwork, Error>) -> Void) {
+        AF.request(baseURL + "/" + endPoint,
+                   method: .get)
+        .responseData(completionHandler: { data in
+            do {
+                guard let newData = data.data else { return }
+                let mapPointNetwork = try JSONDecoder().decode(MapNetwork.self, from: newData)
+                completion(.success(mapPointNetwork))
+            } catch {
+                completion(.failure(error))
+            }
+        })
+    }
 }

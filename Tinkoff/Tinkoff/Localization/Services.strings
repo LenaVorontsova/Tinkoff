@@ -6,7 +6,12 @@
   
 */
 "newsData" = "NewsData";
+"mapData" = "MapData";
 
 "title" = "title";
 "text" = "text";
 "photoPath" = "photoPath";
+
+"lat" = "lat";
+"lng" = "lng";
+

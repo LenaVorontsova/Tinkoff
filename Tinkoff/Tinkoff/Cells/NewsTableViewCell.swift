@@ -92,8 +92,19 @@ final class NewsTableViewCell: UITableViewCell {
     
     func config(with model: NewsTableViewCellModel) {
         titleLabel.text = model.newsTitle
-        let dateText = model.newsDateTitle?.replacingOccurrences(of: "T", with: " ")
-        newsDateLabel.text = dateText
+        var dateText = (model.newsDateTitle?.replacingOccurrences(of: "T", with: " "))!
+        var arr = dateText.components(separatedBy: ":")
+        arr.removeLast()
+        dateText = arr.joined(separator: ":")
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "yyyy-MM-dd hh:mm"
+        if let date = dateFormater.date(from: dateText) {
+            dateFormater.dateFormat = "dd.MM.yyyy hh:mm"
+            let newDate = dateFormater.string(from: date)
+            newsDateLabel.text = newDate
+        } else {
+            newsDateLabel.text = ""
+        }
     }
 }
 

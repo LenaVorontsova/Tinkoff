@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Tinkoff/MapData+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Tinkoff/MapData+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:Tinkoff/NewsData+CoreDataClass.swift">
    </FileRef>
    <FileRef
