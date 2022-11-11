@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import MapKit
 
-final class CateringViewController: UIViewController {
+final class CateringViewController: UIViewController, MKMapViewDelegate {
     lazy var mapView: MKMapView = {
         let map = MKMapView()
         return map

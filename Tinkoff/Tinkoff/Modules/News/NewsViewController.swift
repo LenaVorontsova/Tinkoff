@@ -37,12 +37,12 @@ class NewsViewController: UIViewController {
         searchBar.delegate = self
         configureConstraints()
         presenter.loadData()
-        presenter.getInfoNews()
         self.tableView.register(NewsTableViewCell.self,
                                 forCellReuseIdentifier: NewsTableViewCell.identifier)
         view.backgroundColor = .white
         self.title = R.string.modules.newsTitleRus()
         configureRefresh()
+        self.reloadTable()
     }
     
     private func configureRefresh() {
@@ -104,8 +104,14 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate, UISear
         }
         let cellModel = NewsTableViewCellFactory.cellModel(presenter.newsSearch[indexPath.section])
         cell.config(with: cellModel)
-        cell.newsImage.image = R.image.tinkoffIcon()
-//        cell.newsImage.image = presenter.newsSearch[indexPath.row].photoPath
+        if let url = URL(string: presenter.newsSearch[indexPath.section].photoPath!),
+           let data = try? Data(contentsOf: url) {
+            cell.newsImage.image = UIImage(data: data)
+        } else {
+            cell.newsImage.image = R.image.tinkoffIcon()
+        }
+
+//      cell.newsImage.image = presenter.newsSearch[indexPath.row].photoPath
         return cell
     }
     

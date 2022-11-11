@@ -2,7 +2,7 @@
 //  MapData+CoreDataClass.swift
 //  Tinkoff
 //
-//  Created by Lena Vorontsova on 08.11.2022.
+//  Created by Lena Vorontsova on 11.11.2022.
 //
 //
 

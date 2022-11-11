@@ -13,7 +13,6 @@ struct Map {
     var lng: String?
     var title: String?
     var text: String?
-    var photoPath: UIImage?
 }
 
 struct MapElemenet: Codable {

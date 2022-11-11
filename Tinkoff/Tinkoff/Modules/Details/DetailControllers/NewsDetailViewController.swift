@@ -58,7 +58,12 @@ final class NewsDetailViewController: UIViewController {
     }
     
     private func addTitle() {
-        newsImage.image = R.image.tinkoffIcon()
+        if let url = URL(string: viewModel.image!),
+           let data = try? Data(contentsOf: url) {
+            newsImage.image = UIImage(data: data)
+        } else {
+            newsImage.image = R.image.tinkoffIcon()
+        }
         titleLabel.text = viewModel.titleLabel
         textLabel.text = viewModel.textLabel
     }

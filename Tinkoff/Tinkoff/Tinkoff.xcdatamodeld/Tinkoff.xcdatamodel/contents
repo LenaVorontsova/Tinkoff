@@ -3,13 +3,12 @@
     <entity name="MapData" representedClassName="MapData" syncable="YES" codeGenerationType="class">
         <attribute name="lat" optional="YES" attributeType="String"/>
         <attribute name="lng" optional="YES" attributeType="String"/>
-        <attribute name="photoPath" optional="YES" attributeType="Binary"/>
         <attribute name="text" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <entity name="NewsData" representedClassName="NewsData" syncable="YES" codeGenerationType="class">
         <attribute name="dateOfCreation" optional="YES" attributeType="String"/>
-        <attribute name="photoPath" optional="YES" attributeType="Binary"/>
+        <attribute name="photoPath" optional="YES" attributeType="String"/>
         <attribute name="text" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>

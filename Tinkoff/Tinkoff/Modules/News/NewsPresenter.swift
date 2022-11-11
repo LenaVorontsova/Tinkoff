@@ -13,7 +13,6 @@ protocol NewsPresenting: AnyObject {
     var newsSearch: [News] { get set }
     func pathNews(indexPath: IndexPath) -> DetailViewModelProtocol
     func loadData()
-    func getInfoNews()
 }
 
 final class NewsPresenter: NewsPresenting {
@@ -28,9 +27,6 @@ final class NewsPresenter: NewsPresenting {
     
     func loadData() {
         dataService.loadData()
-    }
-    
-    func getInfoNews() {
         self.news = self.dataService.fetchNewsFromCoreData()
         self.newsSearch = self.news
         self.controller?.reloadTable()

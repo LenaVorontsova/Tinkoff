@@ -2,7 +2,7 @@
 //  NewsData+CoreDataProperties.swift
 //  Tinkoff
 //
-//  Created by Lena Vorontsova on 24.10.2022.
+//  Created by Lena Vorontsova on 11.11.2022.
 //
 //
 
@@ -16,8 +16,8 @@ extension NewsData {
         return NSFetchRequest<NewsData>(entityName: "NewsData")
     }
 
-    @NSManaged public var title: String?
-    @NSManaged public var text: String?
-    @NSManaged public var photoPath: String?
     @NSManaged public var dateOfCreation: String?
+    @NSManaged public var photoPath: String?
+    @NSManaged public var text: String?
+    @NSManaged public var title: String?
 }

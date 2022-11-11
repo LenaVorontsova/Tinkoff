@@ -2,7 +2,7 @@
 //  NewsData+CoreDataClass.swift
 //  Tinkoff
 //
-//  Created by Lena Vorontsova on 24.10.2022.
+//  Created by Lena Vorontsova on 11.11.2022.
 //
 //
 

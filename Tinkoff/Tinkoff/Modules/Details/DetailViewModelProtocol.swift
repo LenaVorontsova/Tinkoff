@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol DetailViewModelProtocol {
-    var image: UIImage? { get }
+    var image: String? { get }
     var titleLabel: String? { get }
     var textLabel: String? { get }
 }

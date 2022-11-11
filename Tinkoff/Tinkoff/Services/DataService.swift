@@ -12,6 +12,7 @@ import CoreData
 
 protocol IDataService {
     var mapPoints: [Map] { get set }
+    var attractions: [Attraction] { get set }
     func loadData()
     func showAlert(error: Error)
     func saveToCoreDataNews(newsArray: NewsNetwork)
@@ -27,6 +28,7 @@ final class DataService: IDataService {
     private var network: NetworkService
     private let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
     var mapPoints: [Map] = []
+    var attractions: [Attraction] = []
     
     init(network: NetworkService) {
         self.network = network
@@ -85,22 +87,23 @@ final class DataService: IDataService {
     
     func fetchMapPoints(newArray: MapNetwork) {
         for element in newArray {
-            var map = Map(lat: nil, lng: nil, title: nil, text: nil, photoPath: nil)
+            var map = Map(lat: nil, lng: nil, title: nil, text: nil)
+            var attr = Attraction(image: nil,
+                                  attractionTitle: nil,
+                                  attractionDescriprion: nil,
+                                  attractionAddress: nil)
             map.lat = element.lat
             map.lng = element.lng
             map.title = element.title
             map.text = element.text
-            map.photoPath = R.image.tinkoffIcon()
-//            let newUrl = network.baseURL + (element.photoPath ?? "")
-//                DispatchQueue.global().async {
-//                    if let url = URL(string: newUrl) {
-//                        guard let data = try? Data(contentsOf: url) else { return }
-//                        map.photoPath = UIImage(data: data)
-//                    } else {
-//                        map.photoPath = R.image.tinkoffIcon()
-//                    }
-//                }
             mapPoints.append(map)
+            if element.mapPointType?.mapPointType == "достопримечательность" {
+                attr.image = R.image.tinkoffIcon()
+                attr.attractionTitle = element.title
+                attr.attractionDescriprion = element.text
+                attr.attractionAddress = element.cityInstance?.name
+                attractions.append(attr)
+            }
         }
     }
     
@@ -113,13 +116,8 @@ final class DataService: IDataService {
             news.setValue(element.title, forKey: R.string.services.title())
             news.setValue(element.text, forKey: R.string.services.text())
             news.setValue(element.dateOfCreation, forKey: "dateOfCreation")
-            // let newUrl: String? = network.baseURL + (element.photoPath ?? "")
             let newUrl = network.baseURL + (element.photoPath ?? "")
-            guard let url = URL(string: newUrl) else { return }
-            DispatchQueue.global().async {
-                guard let data = try? Data(contentsOf: url) else { return }
-                news.setValue(data, forKey: R.string.services.photoPath())
-            }
+            news.setValue(newUrl, forKey: R.string.services.photoPath())
             do {
                 try self.context!.save()
             } catch let error as NSError {
@@ -138,12 +136,6 @@ final class DataService: IDataService {
             map.setValue(element.lng, forKey: R.string.services.lng())
             map.setValue(element.title, forKey: R.string.services.title())
             map.setValue(element.text, forKey: R.string.services.text())
-            let newUrl = network.baseURL + (element.photoPath ?? "")
-            guard let url = URL(string: newUrl) else { return }
-            DispatchQueue.global().async {
-                guard let data = try? Data(contentsOf: url) else { return }
-                map.setValue(data, forKey: R.string.services.photoPath())
-            }
             do {
                 try self.context!.save()
             } catch let error as NSError {
@@ -161,9 +153,7 @@ final class DataService: IDataService {
                 news.newsTitle = element.title
                 news.newsText = element.text
                 news.newsDate = element.dateOfCreation
-                if let data = element.photoPath {
-                    news.photoPath = UIImage(data: data)
-                }
+                news.photoPath = element.photoPath
                 arr.append(news)
             }
         } catch let error as NSError {
@@ -177,14 +167,11 @@ final class DataService: IDataService {
         do {
             let newArr = try context!.fetch(MapData.fetchRequest())
             for element in newArr {
-                var map = Map(lat: nil, lng: nil, title: nil, text: nil, photoPath: nil)
+                var map = Map(lat: nil, lng: nil, title: nil, text: nil)
                 map.lat = element.lat
                 map.lng = element.lng
                 map.title = element.title
                 map.text = element.text
-                if let data = element.photoPath {
-                    map.photoPath = UIImage(data: data)
-                }
                 arr.append(map)
             }
         } catch let error as NSError {

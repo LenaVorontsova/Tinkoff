@@ -10,7 +10,7 @@ import UIKit
 
 final class NewsViewModel: DetailViewModelProtocol {
     private var news: News
-    var image: UIImage? {
+    var image: String? {
         news.photoPath
     }
     var titleLabel: String? {

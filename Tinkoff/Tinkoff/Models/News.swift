@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct News {
-    var photoPath: UIImage?
+    var photoPath: String?
     var newsTitle: String?
     var newsText: String?
     var newsDate: String?
