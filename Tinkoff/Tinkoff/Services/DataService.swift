@@ -11,12 +11,14 @@ import Rswift
 import CoreData
 
 protocol IDataService {
+    var mapPoints: [Map] { get set }
     func loadData()
     func showAlert(error: Error)
     func saveToCoreDataNews(newsArray: NewsNetwork)
     func saveToCoreDataMapPoints(newArray: MapNetwork)
     func fetchNewsFromCoreData() -> [News]
     func fetchMapPointsCoreData() -> [Map]
+    func fetchMapPoints(newArray: MapNetwork)
     func deleteAllData(_ entity: String)
 }
 
@@ -24,6 +26,7 @@ final class DataService: IDataService {
     weak var controller: UIViewController?
     private var network: NetworkService
     private let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+    var mapPoints: [Map] = []
     
     init(network: NetworkService) {
         self.network = network
@@ -68,7 +71,8 @@ final class DataService: IDataService {
             self.network.getInfoMapPoints(endPoint: EndPoints.MapPoints.rawValue) { [weak self] result in
                 switch result {
                 case .success(let serverData):
-                    self?.saveToCoreDataMapPoints(newArray: serverData)
+                    self?.fetchMapPoints(newArray: serverData)
+                    // self?.saveToCoreDataMapPoints(newArray: serverData)
                     infoGroup.leave()
                 case .failure(let error):
                     infoGroup.leave()
@@ -76,6 +80,27 @@ final class DataService: IDataService {
                     print(error)
                 }
             }
+        }
+    }
+    
+    func fetchMapPoints(newArray: MapNetwork) {
+        for element in newArray {
+            var map = Map(lat: nil, lng: nil, title: nil, text: nil, photoPath: nil)
+            map.lat = element.lat
+            map.lng = element.lng
+            map.title = element.title
+            map.text = element.text
+            map.photoPath = R.image.tinkoffIcon()
+//            let newUrl = network.baseURL + (element.photoPath ?? "")
+//                DispatchQueue.global().async {
+//                    if let url = URL(string: newUrl) {
+//                        guard let data = try? Data(contentsOf: url) else { return }
+//                        map.photoPath = UIImage(data: data)
+//                    } else {
+//                        map.photoPath = R.image.tinkoffIcon()
+//                    }
+//                }
+            mapPoints.append(map)
         }
     }
     
@@ -166,7 +191,7 @@ final class DataService: IDataService {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         return arr
-    } 
+    }
     
     func deleteAllData(_ entity: String) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)

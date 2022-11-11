@@ -10,14 +10,32 @@ import UIKit
 import MapKit
 
 protocol CateringPresenting {
+    var mapPoints: [Map] { get set }
     func checkLocationServices()
     func checkLocationAuthorization()
     func showAlert(error: String)
+    func loadData()
+    func getInfoMapPoints()
 }
 
 final class CateringPresenter: CateringPresenting {
+    var mapPoints: [Map] = []
     weak var controller: CateringViewController?
     private let locationManager = CLLocationManager()
+    let dataService: IDataService
+    
+    init(dataService: IDataService) {
+        self.dataService = dataService
+    }
+    
+    func loadData() {
+        dataService.loadData()
+        self.mapPoints = self.dataService.mapPoints
+    }
+    
+    func getInfoMapPoints() {
+        self.mapPoints = self.dataService.fetchMapPointsCoreData()
+    }
     
     func checkLocationServices() {
         DispatchQueue.global().async {

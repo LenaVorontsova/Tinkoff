@@ -9,12 +9,6 @@ import Foundation
 import UIKit
 import MapKit
 
-struct Stadium {
-  var name: String
-  var lattitude: CLLocationDegrees
-  var longtitude: CLLocationDegrees
-}
-
 final class CateringViewController: UIViewController {
     lazy var mapView: MKMapView = {
         let map = MKMapView()
@@ -38,16 +32,33 @@ final class CateringViewController: UIViewController {
         configureConstraints()
         self.title = "Питание"
         presenter.checkLocationServices()
+        presenter.loadData()
+        createMapPoints(mapPointsArray: presenter.mapPoints)
+        mapView.reloadInputViews()
     }
     
-//    func fetchStadiumsOnMap(_ stadiums: [Stadium]) {
-//      for stadium in stadiums {
-//        let annotations = MKPointAnnotation()
-//        annotations.title = stadium.name
-//        annotations.coordinate = CLLocationCoordinate2D(latitude: stadium.lattitude, longitude: stadium.longtitude)
-//        mapView.addAnnotation(annotations)
-//      }
-//    }
+    private func createMapPoints(mapPointsArray: [Map]) {
+        for point in mapPointsArray {
+            let annotations = MKPointAnnotation()
+            if let lat = Double(point.lat!),
+               let lng = Double(point.lng!) {
+                let newLat = CLLocationDegrees(lat)
+                let newLng = CLLocationDegrees(lng)
+                annotations.title = point.title
+                annotations.coordinate = CLLocationCoordinate2D(latitude: newLat, longitude: newLng)
+                self.mapView.addAnnotation(annotations)
+            }
+        }
+    }
+    
+    //    func fetchStadiumsOnMap(_ stadiums: [Stadium]) {
+        //      for stadium in stadiums {
+        //        let annotations = MKPointAnnotation()
+        //        annotations.title = stadium.name
+        //        annotations.coordinate = CLLocationCoordinate2D(latitude: stadium.lattitude, longitude: stadium.longtitude)
+        //        mapView.addAnnotation(annotations)
+        //      }
+        //    }
     
     private func configureConstraints() {
         view.addSubview(mapView)

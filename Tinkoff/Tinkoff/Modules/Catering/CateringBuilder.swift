@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 enum CateringBuilder {
-    static func build() -> UIViewController {
-        let presenter = CateringPresenter()
+    static func build(dataService: IDataService) -> UIViewController {
+        let presenter = CateringPresenter(dataService: dataService)
         let vc = CateringViewController(presenter: presenter)
         presenter.controller = vc
         return vc

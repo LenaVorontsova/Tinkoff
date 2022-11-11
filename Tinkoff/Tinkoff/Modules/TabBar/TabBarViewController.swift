@@ -28,7 +28,8 @@ final class TabBarViewController: UITabBarController {
     private func createTabBar() {
         UITabBar.appearance().backgroundColor = .white
         let newsVC = UINavigationController(rootViewController: NewsBuilder.build(dataService: dataService))
-        let cateringVC = UINavigationController(rootViewController: CateringBuilder.build())
+        let cateringVC = UINavigationController(rootViewController:
+                                                    CateringBuilder.build(dataService: dataService))
         let attractionVC = UINavigationController(rootViewController: AttractionsBuilder.build())
         newsVC.title = R.string.modules.newsTitleRus()
         cateringVC.title = R.string.modules.cateringTitleRus()
