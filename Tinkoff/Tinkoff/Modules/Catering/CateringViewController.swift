@@ -45,20 +45,14 @@ final class CateringViewController: UIViewController {
                 let newLat = CLLocationDegrees(lat)
                 let newLng = CLLocationDegrees(lng)
                 annotations.title = point.title
+                if let text = point.text {
+                    annotations.subtitle = text
+                }
                 annotations.coordinate = CLLocationCoordinate2D(latitude: newLat, longitude: newLng)
                 self.mapView.addAnnotation(annotations)
             }
         }
     }
-    
-    //    func fetchStadiumsOnMap(_ stadiums: [Stadium]) {
-        //      for stadium in stadiums {
-        //        let annotations = MKPointAnnotation()
-        //        annotations.title = stadium.name
-        //        annotations.coordinate = CLLocationCoordinate2D(latitude: stadium.lattitude, longitude: stadium.longtitude)
-        //        mapView.addAnnotation(annotations)
-        //      }
-        //    }
     
     private func configureConstraints() {
         view.addSubview(mapView)
