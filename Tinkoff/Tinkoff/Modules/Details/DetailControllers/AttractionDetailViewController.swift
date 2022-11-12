@@ -14,16 +14,27 @@ final class AttractionDetailViewController: UIViewController {
         return image
     }()
     
-    private var stackView: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.spacing = CGFloat(ConstantsDetail.spacingStack)
-        return stack
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.textAlignment = .justified
+        label.numberOfLines = 5
+        return label
     }()
     
-    let viewModel: AttractionsViewModel
+    private lazy var textLabel: UITextView = {
+        let textView = UITextView()
+        textView.font = .systemFont(ofSize: 18)
+        textView.autocapitalizationType = .words
+        textView.textAlignment = .left
+        textView.backgroundColor = R.color.tinkoffLightGray()
+        textView.isEditable = false
+        return textView
+    }()
     
-    init(viewModel: AttractionsViewModel) {
+    let viewModel: DetailViewModelProtocol
+    
+    init(viewModel: DetailViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -40,30 +51,36 @@ final class AttractionDetailViewController: UIViewController {
     }
     
     private func addTitle() {
-        guard let labels = viewModel.titleLabel else { return }
-        for text in labels {
-            let label = UILabel()
-            label.text = text
-            label.font = .systemFont(ofSize: 28)
-            label.textAlignment = .center
-            stackView.addArrangedSubview(label)
+        if let url = URL(string: viewModel.image!),
+           let data = try? Data(contentsOf: url) {
+            attractionImage.image = UIImage(data: data)
+        } else {
+            attractionImage.image = R.image.tinkoffIcon()
         }
-        attractionImage.image = R.image.tinkoffIcon()
+        titleLabel.text = viewModel.titleLabel
+        textLabel.text = viewModel.textLabel
     }
     
     private func configureConstraints() {
         self.view.addSubview(attractionImage)
-        self.view.addSubview(stackView)
+        self.view.addSubview(titleLabel)
+        self.view.addSubview(textLabel)
         attractionImage.snp.makeConstraints {
             $0.height.width.equalTo(ConstantsDetail.sizeAvatar)
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.topAndBottom)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.offsetAvatar)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-ConstantsDetail.offsetAvatar)
         }
-        stackView.snp.makeConstraints {
+        titleLabel.snp.makeConstraints {
             $0.top.equalTo(attractionImage.snp.bottom).offset(ConstantsDetail.topAndBottom)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.offsetStack)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-ConstantsDetail.offsetAvatar)
+        }
+        textLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(ConstantsDetail.spacingStack)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.offsetStack)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-ConstantsDetail.offsetAvatar)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-ConstantsDetail.topAndBottom)
         }
     }
 }

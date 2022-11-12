@@ -98,7 +98,7 @@ final class DataService: IDataService {
             map.text = element.text
             mapPoints.append(map)
             if element.mapPointType?.mapPointType == "достопримечательность" {
-                attr.image = R.image.tinkoffIcon()
+                attr.image = element.photoPath
                 attr.attractionTitle = element.title
                 attr.attractionDescriprion = element.text
                 attr.attractionAddress = element.cityInstance?.name

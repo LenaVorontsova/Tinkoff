@@ -36,6 +36,7 @@ final class NewsDetailViewController: UIViewController {
         textView.autocapitalizationType = .words
         textView.textAlignment = .left
         textView.backgroundColor = R.color.tinkoffLightGray()
+        textView.isEditable = false
         return textView
     }()
     

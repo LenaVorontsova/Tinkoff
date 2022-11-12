@@ -16,7 +16,7 @@ struct AttractionNetwork: Decodable {
 }
 
 struct Attraction {
-    var image: UIImage?
+    var image: String?
     var attractionTitle: String?
     var attractionDescriprion: String?
     var attractionAddress: String?

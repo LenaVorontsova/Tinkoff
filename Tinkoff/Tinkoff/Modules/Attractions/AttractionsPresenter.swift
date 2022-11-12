@@ -11,8 +11,8 @@ import UIKit
 protocol AttractionsPresenting: AnyObject {
     var attractions: [Attraction] { get set }
     var attractionsSearch: [Attraction] { get set }
-    func fillInAttractions()
-    func pathAttraction(indexPath: IndexPath) -> AttractionsViewModel    
+    func pathAttraction(indexPath: IndexPath) -> AttractionsViewModel
+    func loadData()
 }
 
 final class AttractionsPresenter: AttractionsPresenting {
@@ -20,18 +20,20 @@ final class AttractionsPresenter: AttractionsPresenting {
     var attractionsSearch: [Attraction] = []
     weak var controller: AttractionsViewController?
     
-    func fillInAttractions() {
-        for _ in 0...10 {
-            attractions.append(Attraction(image: R.image.tinkoffIcon(),
-                                          attractionTitle: "AttractionsName",
-                                          attractionDescriprion: "AttractionsDescription",
-                                          attractionAddress: "AttractionsAddres"))
-            attractionsSearch = attractions
-        }
+    let dataService: IDataService
+    
+    init(dataService: IDataService) {
+        self.dataService = dataService
+    }
+    
+    func loadData() {
+        dataService.loadData()
+        self.attractions = self.dataService.attractions
+        self.attractionsSearch = self.attractions
         self.controller?.reloadTable()
     }
     
     func pathAttraction(indexPath: IndexPath) -> AttractionsViewModel {
-        return AttractionsViewModel(attraction: attractionsSearch[indexPath.row])
+        return AttractionsViewModel(attraction: attractionsSearch[indexPath.section])
     }
 }

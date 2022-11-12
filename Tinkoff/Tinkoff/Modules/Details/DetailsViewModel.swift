@@ -25,17 +25,16 @@ final class NewsViewModel: DetailViewModelProtocol {
     }
 }
 
-final class AttractionsViewModel {
+final class AttractionsViewModel: DetailViewModelProtocol {
     private var attraction: Attraction
-    var image: UIImage? {
-        R.image.tinkoffIcon()
+    var image: String? {
+        attraction.image
     }
-    var titleLabel: [String]? {
-        var arr = [String]()
-        arr.append(attraction.attractionTitle ?? "")
-        arr.append(attraction.attractionDescriprion ?? "")
-        arr.append(attraction.attractionAddress ?? "")
-        return arr
+    var titleLabel: String? {
+        attraction.attractionTitle
+    }
+    var textLabel: String? {
+        attraction.attractionDescriprion
     }
     
     required init(attraction: Attraction) {

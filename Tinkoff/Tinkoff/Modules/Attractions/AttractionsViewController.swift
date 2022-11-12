@@ -18,6 +18,7 @@ final class AttractionsViewController: UIViewController {
         return search
     }()
     private let presenter: AttractionsPresenting
+    private lazy var refreshControl = UIRefreshControl()
 
     init(presenter: AttractionsPresenting) {
         self.presenter = presenter
@@ -34,11 +35,26 @@ final class AttractionsViewController: UIViewController {
         tableView.dataSource = self
         searchBar.delegate = self
         configureConstraints()
-        presenter.fillInAttractions()
+        presenter.loadData()
         self.tableView.register(AttractionsTableViewCell.self,
                                 forCellReuseIdentifier: AttractionsTableViewCell.identifier)
         view.backgroundColor = .white
         self.title = R.string.modules.attractionTitleRus()
+        configureRefresh()
+        self.reloadTable()
+    }
+    
+    private func configureRefresh() {
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+    }
+    
+    @objc
+    func refreshData() {
+        presenter.loadData()
+        DispatchQueue.main.async {
+            self.refreshControl.endRefreshing()
+        }
     }
     
     private func configureConstraints() {
@@ -86,7 +102,12 @@ extension AttractionsViewController: UITableViewDataSource, UITableViewDelegate,
         }
         let cellModel = AttractionTableViewCellFactory.cellModel(presenter.attractionsSearch[indexPath.section])
         cell.config(with: cellModel)
-        cell.attractionImage.image = presenter.attractionsSearch[indexPath.section].image
+        if let url = URL(string: presenter.attractionsSearch[indexPath.section].image!),
+           let data = try? Data(contentsOf: url) {
+            cell.attractionImage.image = UIImage(data: data)
+        } else {
+            cell.attractionImage.image = R.image.tinkoffIcon()
+        }
         return cell
     }
     

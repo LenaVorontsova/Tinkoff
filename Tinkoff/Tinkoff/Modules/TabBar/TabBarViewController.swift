@@ -30,7 +30,8 @@ final class TabBarViewController: UITabBarController {
         let newsVC = UINavigationController(rootViewController: NewsBuilder.build(dataService: dataService))
         let cateringVC = UINavigationController(rootViewController:
                                                     CateringBuilder.build(dataService: dataService))
-        let attractionVC = UINavigationController(rootViewController: AttractionsBuilder.build())
+        let attractionVC = UINavigationController(rootViewController:
+                                                    AttractionsBuilder.build(dataService: dataService))
         newsVC.title = R.string.modules.newsTitleRus()
         cateringVC.title = R.string.modules.cateringTitleRus()
         attractionVC.title = R.string.modules.attractionTitleRus()
