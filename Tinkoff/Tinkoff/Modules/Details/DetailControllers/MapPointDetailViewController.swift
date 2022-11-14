@@ -17,7 +17,7 @@ final class MapPointDetailViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .bold)
-        label.textAlignment = .justified
+        label.textAlignment = .center
         label.numberOfLines = 5
         return label
     }()
