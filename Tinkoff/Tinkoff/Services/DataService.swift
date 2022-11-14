@@ -87,7 +87,7 @@ final class DataService: IDataService {
     
     func fetchMapPoints(newArray: MapNetwork) {
         for element in newArray {
-            var map = Map(lat: nil, lng: nil, title: nil, text: nil)
+            var map = Map(lat: nil, lng: nil, title: nil, text: nil, mapPointType: nil, photoPath: nil)
             var attr = Attraction(image: nil,
                                   attractionTitle: nil,
                                   attractionDescriprion: nil,
@@ -96,6 +96,8 @@ final class DataService: IDataService {
             map.lng = element.lng
             map.title = element.title
             map.text = element.text
+            map.mapPointType = element.mapPointType?.mapPointType
+            map.photoPath = element.photoPath
             mapPoints.append(map)
             if element.mapPointType?.mapPointType == "достопримечательность" {
                 attr.image = element.photoPath

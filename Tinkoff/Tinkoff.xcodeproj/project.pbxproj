@@ -44,6 +44,8 @@
 		84B4A7A428FD3B66001D2CD3 /* SplashScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A7A328FD3B66001D2CD3 /* SplashScreenPresenter.swift */; };
 		84B4A7A628FD3B70001D2CD3 /* SplashScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A7A528FD3B70001D2CD3 /* SplashScreenBuilder.swift */; };
 		84B4A7A928FD5EF8001D2CD3 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A7A828FD5EF8001D2CD3 /* TabBarViewController.swift */; };
+		84E62624292209E200419161 /* MapPointDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E62623292209E200419161 /* MapPointDetailViewController.swift */; };
+		84E62626292215A800419161 /* MapPointsAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E62625292215A800419161 /* MapPointsAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +88,8 @@
 		84B4A7A328FD3B66001D2CD3 /* SplashScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenPresenter.swift; sourceTree = "<group>"; };
 		84B4A7A528FD3B70001D2CD3 /* SplashScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenBuilder.swift; sourceTree = "<group>"; };
 		84B4A7A828FD5EF8001D2CD3 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		84E62623292209E200419161 /* MapPointDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPointDetailViewController.swift; sourceTree = "<group>"; };
+		84E62625292215A800419161 /* MapPointsAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPointsAnnotation.swift; sourceTree = "<group>"; };
 		B59646E364AF3BA36CF240C4 /* Pods_Tinkoff.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tinkoff.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C26A54A539ACD1B82A954AFE /* Pods-Tinkoff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinkoff.release.xcconfig"; path = "Target Support Files/Pods-Tinkoff/Pods-Tinkoff.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +130,7 @@
 			children = (
 				844DCC7A290158B30070D674 /* AttractionDetailViewController.swift */,
 				844DCC782901518C0070D674 /* NewsDetailViewController.swift */,
+				84E62623292209E200419161 /* MapPointDetailViewController.swift */,
 			);
 			path = DetailControllers;
 			sourceTree = "<group>";
@@ -237,6 +242,7 @@
 				84B4A79728FD37D5001D2CD3 /* CateringViewController.swift */,
 				84B4A79928FD3827001D2CD3 /* CateringPresenter.swift */,
 				84B4A79B28FD3836001D2CD3 /* CateringBuilder.swift */,
+				84E62625292215A800419161 /* MapPointsAnnotation.swift */,
 			);
 			path = Catering;
 			sourceTree = "<group>";
@@ -448,12 +454,14 @@
 				84663281291919C500EB6E9D /* Tinkoff.xcdatamodeld in Sources */,
 				84B4A76628FD1759001D2CD3 /* AppDelegate.swift in Sources */,
 				84B4A7A928FD5EF8001D2CD3 /* TabBarViewController.swift in Sources */,
+				84E62626292215A800419161 /* MapPointsAnnotation.swift in Sources */,
 				84B4A79528FD3345001D2CD3 /* AttractionsTableViewCell.swift in Sources */,
 				84B4A79128FD30E3001D2CD3 /* AttractionsBuilder.swift in Sources */,
 				84B4A78F28FD30D9001D2CD3 /* AttractionsPresenter.swift in Sources */,
 				84B4A79328FD31DA001D2CD3 /* Attraction.swift in Sources */,
 				84B4A78A28FD25BC001D2CD3 /* News.swift in Sources */,
 				84B4A78D28FD30C9001D2CD3 /* AttractionsViewController.swift in Sources */,
+				84E62624292209E200419161 /* MapPointDetailViewController.swift in Sources */,
 				844DCC73290150BC0070D674 /* DetailViewModelProtocol.swift in Sources */,
 				84B4A79F28FD3AFE001D2CD3 /* StartService.swift in Sources */,
 				84B4A78428FD20A7001D2CD3 /* NewsBuilder.swift in Sources */,

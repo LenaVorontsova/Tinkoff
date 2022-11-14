@@ -41,3 +41,20 @@ final class AttractionsViewModel: DetailViewModelProtocol {
         self.attraction = attraction
     }
 }
+
+final class MapPointsViewModel: DetailViewModelProtocol {
+    private var mapPoints: Map
+    var image: String? {
+        mapPoints.photoPath
+    }
+    var titleLabel: String? {
+        mapPoints.title
+    }
+    var textLabel: String? {
+        mapPoints.text
+    }
+    
+    required init(mapPoints: Map) {
+        self.mapPoints = mapPoints
+    }
+}

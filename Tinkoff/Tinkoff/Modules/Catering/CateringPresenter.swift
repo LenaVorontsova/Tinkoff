@@ -16,6 +16,7 @@ protocol CateringPresenting {
     func showAlert(error: String)
     func loadData()
     func getInfoMapPoints()
+    func pathPoint(mapPoint: Map) -> DetailViewModelProtocol
 }
 
 final class CateringPresenter: CateringPresenting {
@@ -71,5 +72,9 @@ final class CateringPresenter: CateringPresenting {
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: R.string.alertMessages.okTitle(), style: .cancel))
         controller?.present(alert, animated: false)
+    }
+    
+    func pathPoint(mapPoint: Map) -> DetailViewModelProtocol {
+        return MapPointsViewModel(mapPoints: mapPoint)
     }
 }
