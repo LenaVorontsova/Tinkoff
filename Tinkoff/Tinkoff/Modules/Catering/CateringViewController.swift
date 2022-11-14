@@ -29,6 +29,7 @@ final class CateringViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        
         view.backgroundColor = .white
         configureConstraints()
         self.title = "Питание"

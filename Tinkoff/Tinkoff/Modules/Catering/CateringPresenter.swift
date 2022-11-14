@@ -46,6 +46,10 @@ final class CateringPresenter: CateringPresenting {
                 self.showAlert(error: R.string.alertMessages.checkResolution())
             }
         }
+        if let userLocation = locationManager.location?.coordinate {
+            let viewRegion = MKCoordinateRegion(center: userLocation, latitudinalMeters: 200, longitudinalMeters: 200)
+            controller?.mapView.setRegion(viewRegion, animated: true)
+        }
     }
     
     func checkLocationAuthorization() {
