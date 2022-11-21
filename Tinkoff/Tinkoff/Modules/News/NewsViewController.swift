@@ -12,11 +12,8 @@ class NewsViewController: UIViewController {
     private var tableView: UITableView = {
         let table = UITableView()
         table.backgroundColor = .white
+        table.separatorStyle = .none
         return table
-    }()
-    private var searchBar: UISearchBar = {
-        let search = UISearchBar()
-        return search
     }()
     private let presenter: NewsPresenting
     private lazy var refreshControl = UIRefreshControl()
@@ -34,7 +31,6 @@ class NewsViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        searchBar.delegate = self
         configureConstraints()
         presenter.loadData()
         self.tableView.register(NewsTableViewCell.self,
@@ -59,14 +55,9 @@ class NewsViewController: UIViewController {
     }
     
     private func configureConstraints() {
-        view.addSubview(searchBar)
         view.addSubview(tableView)
-        searchBar.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            $0.trailing.leading.equalToSuperview()
-        }
         tableView.snp.makeConstraints {
-            $0.top.equalTo(searchBar.snp.bottom)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(ConstantsCell.topAndLeadImage)
             $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-ConstantsCell.topAndLeadImage)
@@ -78,7 +69,7 @@ class NewsViewController: UIViewController {
     }
 }
 
-extension NewsViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return presenter.newsSearch.count
     }
@@ -123,9 +114,5 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate, UISear
         let viewModel = presenter.pathNews(indexPath: indexPath)
         let controller = NewsDetailViewController(viewModel: viewModel)
         self.navigationController?.pushViewController(controller, animated: false)
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        presenter.searchCharacter(searchText: searchText)
     }
 }

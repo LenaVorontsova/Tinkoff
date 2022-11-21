@@ -11,11 +11,8 @@ import UIKit
 final class AttractionsViewController: UIViewController {
     private var tableView: UITableView = {
         let table = UITableView()
+        table.separatorStyle = .none
         return table
-    }()
-    private var searchBar: UISearchBar = {
-        let search = UISearchBar()
-        return search
     }()
     private let presenter: AttractionsPresenting
     private lazy var refreshControl = UIRefreshControl()
@@ -33,7 +30,6 @@ final class AttractionsViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        searchBar.delegate = self
         configureConstraints()
         presenter.loadData()
         self.tableView.register(AttractionsTableViewCell.self,
@@ -58,16 +54,12 @@ final class AttractionsViewController: UIViewController {
     }
     
     private func configureConstraints() {
-        view.addSubview(searchBar)
         view.addSubview(tableView)
-        searchBar.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            $0.trailing.leading.equalToSuperview()
-        }
         tableView.snp.makeConstraints {
-            $0.top.equalTo(searchBar.snp.bottom)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-            $0.trailing.leading.equalToSuperview()
+            $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(ConstantsCell.topAndLeadImage)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-ConstantsCell.topAndLeadImage)
         }
     }
     
@@ -76,7 +68,7 @@ final class AttractionsViewController: UIViewController {
     }
 }
 
-extension AttractionsViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+extension AttractionsViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return presenter.attractionsSearch.count
     }
@@ -119,9 +111,5 @@ extension AttractionsViewController: UITableViewDataSource, UITableViewDelegate,
         let viewModel = presenter.pathAttraction(indexPath: indexPath)
         let controller = AttractionDetailViewController(viewModel: viewModel)
         self.navigationController?.pushViewController(controller, animated: false)
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        presenter.searchCharacter(searchText: searchText)
     }
 }

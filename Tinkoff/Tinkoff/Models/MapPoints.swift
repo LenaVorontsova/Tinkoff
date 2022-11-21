@@ -18,23 +18,23 @@ struct Map {
 }
 
 struct MapElemenet: Codable {
-    let id: Int
+    let id: Int?
     let lat, lng: String?
     let cityInstance: CityInstance?
     let title, text, photoPath: String?
     let likes, disLikes: Int?
-    let tinkoffCashBack: Bool
+    let tinkoffCashBack: Bool?
     let comments, dateOfCreation: String?
     let mapPointType: MapPointType?
 }
 
 struct CityInstance: Codable {
-    let id: Int
+    let id: Int?
     let name: String?
 }
 
 struct MapPointType: Codable {
-    let id: Int
+    let id: Int?
     let mapPointType: String?
 }
 
