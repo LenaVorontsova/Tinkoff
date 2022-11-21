@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2F20A7F9960EC8C8C25D2787 /* Pods_Tinkoff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59646E364AF3BA36CF240C4 /* Pods_Tinkoff.framework */; };
+		84201AF8292B94C7001761C4 /* NewsDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84201AF7292B94C7001761C4 /* NewsDetailTableViewCell.swift */; };
+		84201AFA292B9FBD001761C4 /* AttractionsDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84201AF9292B9FBD001761C4 /* AttractionsDetailsTableViewCell.swift */; };
+		84201AFC292BA229001761C4 /* MapPointDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84201AFB292BA229001761C4 /* MapPointDetailTableViewCell.swift */; };
 		844393522902F48F0072B958 /* Cells.strings in Resources */ = {isa = PBXBuildFile; fileRef = 844393512902F48F0072B958 /* Cells.strings */; };
 		844393542902F5900072B958 /* Modules.strings in Resources */ = {isa = PBXBuildFile; fileRef = 844393532902F5900072B958 /* Modules.strings */; };
 		844393562905BA820072B958 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844393552905BA820072B958 /* NetworkService.swift */; };
@@ -50,6 +53,9 @@
 
 /* Begin PBXFileReference section */
 		10710DEA7C0B5CDD4ED77948 /* Pods-Tinkoff.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinkoff.debug.xcconfig"; path = "Target Support Files/Pods-Tinkoff/Pods-Tinkoff.debug.xcconfig"; sourceTree = "<group>"; };
+		84201AF7292B94C7001761C4 /* NewsDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailTableViewCell.swift; sourceTree = "<group>"; };
+		84201AF9292B9FBD001761C4 /* AttractionsDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionsDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		84201AFB292BA229001761C4 /* MapPointDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPointDetailTableViewCell.swift; sourceTree = "<group>"; };
 		844393512902F48F0072B958 /* Cells.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Cells.strings; sourceTree = "<group>"; };
 		844393532902F5900072B958 /* Modules.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Modules.strings; sourceTree = "<group>"; };
 		844393552905BA820072B958 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -211,6 +217,9 @@
 			children = (
 				84B4A78628FD22D4001D2CD3 /* NewsTableViewCell.swift */,
 				84B4A79428FD3345001D2CD3 /* AttractionsTableViewCell.swift */,
+				84201AF7292B94C7001761C4 /* NewsDetailTableViewCell.swift */,
+				84201AF9292B9FBD001761C4 /* AttractionsDetailsTableViewCell.swift */,
+				84201AFB292BA229001761C4 /* MapPointDetailTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -441,6 +450,7 @@
 			files = (
 				84B4A76A28FD1759001D2CD3 /* NewsViewController.swift in Sources */,
 				844DCC7F2902F1980070D674 /* R.generated.swift in Sources */,
+				84201AFA292B9FBD001761C4 /* AttractionsDetailsTableViewCell.swift in Sources */,
 				84B4A78728FD22D4001D2CD3 /* NewsTableViewCell.swift in Sources */,
 				84B4A79A28FD3827001D2CD3 /* CateringPresenter.swift in Sources */,
 				84B4A7A628FD3B70001D2CD3 /* SplashScreenBuilder.swift in Sources */,
@@ -450,6 +460,7 @@
 				844DCC77290151010070D674 /* DetailsViewModel.swift in Sources */,
 				8443935F290650450072B958 /* DataService.swift in Sources */,
 				844DCC792901518C0070D674 /* NewsDetailViewController.swift in Sources */,
+				84201AF8292B94C7001761C4 /* NewsDetailTableViewCell.swift in Sources */,
 				8443935B2905BD1B0072B958 /* EndPoints.swift in Sources */,
 				84663281291919C500EB6E9D /* Tinkoff.xcdatamodeld in Sources */,
 				84B4A76628FD1759001D2CD3 /* AppDelegate.swift in Sources */,
@@ -461,6 +472,7 @@
 				84B4A79328FD31DA001D2CD3 /* Attraction.swift in Sources */,
 				84B4A78A28FD25BC001D2CD3 /* News.swift in Sources */,
 				84B4A78D28FD30C9001D2CD3 /* AttractionsViewController.swift in Sources */,
+				84201AFC292BA229001761C4 /* MapPointDetailTableViewCell.swift in Sources */,
 				84E62624292209E200419161 /* MapPointDetailViewController.swift in Sources */,
 				844DCC73290150BC0070D674 /* DetailViewModelProtocol.swift in Sources */,
 				84B4A79F28FD3AFE001D2CD3 /* StartService.swift in Sources */,

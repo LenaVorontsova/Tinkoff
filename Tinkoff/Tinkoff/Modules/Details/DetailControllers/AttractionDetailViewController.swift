@@ -9,27 +9,11 @@ import Foundation
 import UIKit
 
 final class AttractionDetailViewController: UIViewController {
-    private lazy var attractionImage: UIImageView = {
-        let image = UIImageView()
-        return image
-    }()
-    
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 20, weight: .bold)
-        label.textAlignment = .center
-        label.numberOfLines = 5
-        return label
-    }()
-    
-    private lazy var textLabel: UITextView = {
-        let textView = UITextView()
-        textView.font = .systemFont(ofSize: 18)
-        textView.autocapitalizationType = .words
-        textView.textAlignment = .left
-        textView.backgroundColor = R.color.tinkoffLightGray()
-        textView.isEditable = false
-        return textView
+    private var tableView: UITableView = {
+        let table = UITableView()
+        table.backgroundColor = R.color.tinkoffLightGray()
+        table.separatorStyle = .none
+        return table
     }()
     
     let viewModel: DetailViewModelProtocol
@@ -45,42 +29,47 @@ final class AttractionDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addTitle()
+        tableView.delegate = self
+        tableView.dataSource = self
+        self.tableView.register(AttractionsDetailTableViewCell.self,
+                                forCellReuseIdentifier: "AttractionsDetailTableViewCell")
         configureConstraints()
         view.backgroundColor = R.color.tinkoffLightGray()
     }
     
-    private func addTitle() {
-        if let url = URL(string: viewModel.image!),
-           let data = try? Data(contentsOf: url) {
-            attractionImage.image = UIImage(data: data)
-        } else {
-            attractionImage.image = R.image.tinkoffIcon()
+    private func configureConstraints() {
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(ConstantsCell.topAndLeadImage)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-ConstantsCell.topAndLeadImage)
         }
-        titleLabel.text = viewModel.titleLabel
-        textLabel.text = viewModel.textLabel
+    }
+}
+
+extension AttractionDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
-    private func configureConstraints() {
-        self.view.addSubview(attractionImage)
-        self.view.addSubview(titleLabel)
-        self.view.addSubview(textLabel)
-        attractionImage.snp.makeConstraints {
-            $0.height.width.equalTo(ConstantsDetail.sizeAvatar)
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.topAndBottom)
-            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.offsetAvatar)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-ConstantsDetail.offsetAvatar)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: AttractionsDetailTableViewCell.identifier,
+                                                       for: indexPath) as? AttractionsDetailTableViewCell else {
+            return UITableViewCell()
         }
-        titleLabel.snp.makeConstraints {
-            $0.top.equalTo(attractionImage.snp.bottom).offset(ConstantsDetail.topAndBottom)
-            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.offsetStack)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-ConstantsDetail.offsetAvatar)
-        }
-        textLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(ConstantsDetail.spacingStack)
-            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.offsetStack)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-ConstantsDetail.offsetAvatar)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-ConstantsDetail.topAndBottom)
-        }
+        let cellModel = AttractionsDetailTableViewCellFactory.cellModel(detailText: viewModel.textLabel!,
+                                                                        attrImage: viewModel.image!,
+                                                                        attrTitle: viewModel.titleLabel!)
+        cell.config(with: cellModel)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }

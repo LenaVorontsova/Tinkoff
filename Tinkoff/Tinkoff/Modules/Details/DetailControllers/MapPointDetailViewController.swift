@@ -9,27 +9,11 @@ import Foundation
 import UIKit
 
 final class MapPointDetailViewController: UIViewController {
-    private lazy var image: UIImageView = {
-        let image = UIImageView()
-        return image
-    }()
-    
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 20, weight: .bold)
-        label.textAlignment = .center
-        label.numberOfLines = 5
-        return label
-    }()
-    
-    private lazy var textLabel: UITextView = {
-        let textView = UITextView()
-        textView.font = .systemFont(ofSize: 18)
-        textView.autocapitalizationType = .words
-        textView.textAlignment = .left
-        textView.backgroundColor = R.color.tinkoffLightGray()
-        textView.isEditable = false
-        return textView
+    private var tableView: UITableView = {
+        let table = UITableView()
+        table.backgroundColor = R.color.tinkoffLightGray()
+        table.separatorStyle = .none
+        return table
     }()
     
     let viewModel: DetailViewModelProtocol
@@ -45,42 +29,47 @@ final class MapPointDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = R.color.tinkoffLightGray()
-        addTitle()
+        tableView.delegate = self
+        tableView.dataSource = self
+        self.tableView.register(MapPointDetailTableViewCell.self,
+                                forCellReuseIdentifier: "MapPointDetailTableViewCell")
         configureConstraints()
-    }
-    
-    private func addTitle() {
-        if let url = URL(string: viewModel.image!),
-           let data = try? Data(contentsOf: url) {
-            image.image = UIImage(data: data)
-        } else {
-            image.image = R.image.tinkoffIcon()
-        }
-        titleLabel.text = viewModel.titleLabel
-        textLabel.text = viewModel.textLabel
+        view.backgroundColor = R.color.tinkoffLightGray()
     }
     
     private func configureConstraints() {
-        self.view.addSubview(image)
-        self.view.addSubview(titleLabel)
-        self.view.addSubview(textLabel)
-        image.snp.makeConstraints {
-            $0.height.width.equalTo(ConstantsDetail.sizeAvatar)
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.topAndBottom)
-            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.offsetAvatar)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-ConstantsDetail.offsetAvatar)
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(ConstantsCell.topAndLeadImage)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-ConstantsCell.topAndLeadImage)
         }
-        titleLabel.snp.makeConstraints {
-            $0.top.equalTo(image.snp.bottom).offset(ConstantsDetail.topAndBottom)
-            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.offsetStack)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-ConstantsDetail.offsetAvatar)
+    }
+}
+
+extension MapPointDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MapPointDetailTableViewCell.identifier,
+                                                       for: indexPath) as? MapPointDetailTableViewCell else {
+            return UITableViewCell()
         }
-        textLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(ConstantsDetail.spacingStack)
-            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(ConstantsDetail.offsetStack)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-ConstantsDetail.offsetAvatar)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-ConstantsDetail.topAndBottom)
-        }
+        let cellModel = MapPointDetailTableViewCellFactory.cellModel(detailText: viewModel.textLabel!,
+                                                                     mapPointImage: viewModel.image!,
+                                                                     mapPointTitle: viewModel.titleLabel!)
+        cell.config(with: cellModel)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
