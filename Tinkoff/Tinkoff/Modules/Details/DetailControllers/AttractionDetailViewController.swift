@@ -64,7 +64,8 @@ extension AttractionDetailViewController: UITableViewDelegate, UITableViewDataSo
         }
         let cellModel = AttractionsDetailTableViewCellFactory.cellModel(detailText: viewModel.textLabel!,
                                                                         attrImage: viewModel.image!,
-                                                                        attrTitle: viewModel.titleLabel!)
+                                                                        attrTitle: viewModel.titleLabel!,
+                                                                        dateOfCreation: viewModel.dateOfCreation!)
         cell.config(with: cellModel)
         return cell
     }

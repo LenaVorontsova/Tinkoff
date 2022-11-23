@@ -64,7 +64,8 @@ extension MapPointDetailViewController: UITableViewDelegate, UITableViewDataSour
         }
         let cellModel = MapPointDetailTableViewCellFactory.cellModel(detailText: viewModel.textLabel!,
                                                                      mapPointImage: viewModel.image!,
-                                                                     mapPointTitle: viewModel.titleLabel!)
+                                                                     mapPointTitle: viewModel.titleLabel!,
+                                                                     dateOfCreation: viewModel.dateOfCreation!)
         cell.config(with: cellModel)
         return cell
     }

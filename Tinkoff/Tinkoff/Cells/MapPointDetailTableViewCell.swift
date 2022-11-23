@@ -14,15 +14,18 @@ struct MapPointDetailTableViewCellModel {
     let detailText: String?
     let mapPointImage: String?
     let mapPointTitle: String?
+    let dateOfCreation: String?
 }
 
 enum MapPointDetailTableViewCellFactory {
     static func cellModel(detailText: String,
                           mapPointImage: String,
-                          mapPointTitle: String) -> MapPointDetailTableViewCellModel {
+                          mapPointTitle: String,
+                          dateOfCreation: String) -> MapPointDetailTableViewCellModel {
         MapPointDetailTableViewCellModel(detailText: detailText,
                                          mapPointImage: mapPointImage,
-                                         mapPointTitle: mapPointTitle)
+                                         mapPointTitle: mapPointTitle,
+                                         dateOfCreation: dateOfCreation)
     }
 }
 
@@ -52,6 +55,15 @@ final class MapPointDetailTableViewCell: UITableViewCell {
         return label
     }()
     
+    private lazy var dateOfCreation: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 16)
+        label.textColor = .lightGray
+        label.textAlignment = .left
+        label.backgroundColor = R.color.tinkoffLightGray()
+        return label
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = R.color.tinkoffLightGray()
@@ -66,6 +78,7 @@ final class MapPointDetailTableViewCell: UITableViewCell {
         contentView.addSubview(mapPointImage)
         contentView.addSubview(titleLabel)
         contentView.addSubview(detailText)
+        contentView.addSubview(dateOfCreation)
         mapPointImage.snp.makeConstraints {
             $0.height.width.equalTo(ConstantsDetail.sizeAvatar)
             $0.top.equalTo(contentView.safeAreaLayoutGuide.snp.top).offset(ConstantsDetail.topAndBottom)
@@ -81,6 +94,11 @@ final class MapPointDetailTableViewCell: UITableViewCell {
             $0.top.equalTo(titleLabel.safeAreaLayoutGuide.snp.bottom).offset(ConstantsDetail.topAndBottom)
             $0.leading.equalTo(contentView.safeAreaLayoutGuide.snp.leading).offset(ConstantsDetail.offsetStack)
             $0.trailing.equalTo(contentView.safeAreaLayoutGuide.snp.trailing).offset(-ConstantsDetail.offsetStack)
+        }
+        dateOfCreation.snp.makeConstraints {
+            $0.top.equalTo(detailText.safeAreaLayoutGuide.snp.bottom).offset(ConstantsDetail.topAndBottom)
+            $0.leading.equalTo(contentView.safeAreaLayoutGuide.snp.leading).offset(ConstantsDetail.offsetStack)
+            $0.trailing.equalTo(contentView.safeAreaLayoutGuide.snp.trailing).offset(-ConstantsDetail.offsetStack)
             $0.bottom.equalTo(contentView.safeAreaLayoutGuide.snp.bottom).offset(-ConstantsDetail.topAndBottom)
         }
     }
@@ -94,6 +112,19 @@ final class MapPointDetailTableViewCell: UITableViewCell {
             mapPointImage.image = R.image.tinkoffIcon()
         }
         titleLabel.text = model.mapPointTitle
+        var dateText = (model.dateOfCreation?.replacingOccurrences(of: "T", with: " "))!
+        var arr = dateText.components(separatedBy: ":")
+        arr.removeLast()
+        dateText = arr.joined(separator: ":")
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "yyyy-MM-dd hh:mm"
+        if let date = dateFormater.date(from: dateText) {
+            dateFormater.dateFormat = "dd.MM.yyyy hh:mm"
+            let newDate = dateFormater.string(from: date)
+            dateOfCreation.text = newDate
+        } else {
+            dateOfCreation.text = ""
+        }
     }
 }
 
