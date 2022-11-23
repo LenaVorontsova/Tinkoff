@@ -16,9 +16,9 @@ final class MapPointDetailViewController: UIViewController {
         return table
     }()
     
-    let viewModel: DetailViewModelProtocol
+    let viewModel: MapPointsViewModel
     
-    init(viewModel: DetailViewModelProtocol) {
+    init(viewModel: MapPointsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

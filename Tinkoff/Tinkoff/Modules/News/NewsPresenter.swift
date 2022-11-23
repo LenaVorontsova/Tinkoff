@@ -11,7 +11,7 @@ import UIKit
 protocol NewsPresenting: AnyObject {
     var news: [News] { get set }
     var newsSearch: [News] { get set }
-    func pathNews(indexPath: IndexPath) -> DetailViewModelProtocol
+    func pathNews(indexPath: IndexPath) -> NewsViewModel
     func loadData()
 }
 
@@ -32,7 +32,7 @@ final class NewsPresenter: NewsPresenting {
         self.controller?.reloadTable()
     }
     
-    func pathNews(indexPath: IndexPath) -> DetailViewModelProtocol {
+    func pathNews(indexPath: IndexPath) -> NewsViewModel {
         return NewsViewModel(news: newsSearch[indexPath.section])
     }
 }

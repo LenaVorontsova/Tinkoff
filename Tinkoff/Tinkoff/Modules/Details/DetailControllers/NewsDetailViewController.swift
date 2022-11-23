@@ -24,9 +24,9 @@ final class NewsDetailViewController: UIViewController {
         return table
     }()
 
-    let viewModel: DetailViewModelProtocol
+    let viewModel: NewsViewModel
     
-    init(viewModel: DetailViewModelProtocol) {
+    init(viewModel: NewsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

@@ -18,7 +18,6 @@
 		8443935F290650450072B958 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8443935E290650450072B958 /* DataService.swift */; };
 		84439361290651180072B958 /* AlertMessages.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84439360290651180072B958 /* AlertMessages.strings */; };
 		84439363290655630072B958 /* Services.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84439362290655630072B958 /* Services.strings */; };
-		844DCC73290150BC0070D674 /* DetailViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DCC72290150BC0070D674 /* DetailViewModelProtocol.swift */; };
 		844DCC77290151010070D674 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DCC76290151010070D674 /* DetailsViewModel.swift */; };
 		844DCC792901518C0070D674 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DCC782901518C0070D674 /* NewsDetailViewController.swift */; };
 		844DCC7B290158B30070D674 /* AttractionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DCC7A290158B30070D674 /* AttractionDetailViewController.swift */; };
@@ -63,7 +62,6 @@
 		8443935E290650450072B958 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		84439360290651180072B958 /* AlertMessages.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = AlertMessages.strings; sourceTree = "<group>"; };
 		84439362290655630072B958 /* Services.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Services.strings; sourceTree = "<group>"; };
-		844DCC72290150BC0070D674 /* DetailViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelProtocol.swift; sourceTree = "<group>"; };
 		844DCC76290151010070D674 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		844DCC782901518C0070D674 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		844DCC7A290158B30070D674 /* AttractionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionDetailViewController.swift; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 		844DCC632900425A0070D674 /* Details */ = {
 			isa = PBXGroup;
 			children = (
-				844DCC72290150BC0070D674 /* DetailViewModelProtocol.swift */,
 				844DCC76290151010070D674 /* DetailsViewModel.swift */,
 				844DCC7C29015A6D0070D674 /* DetailControllers */,
 			);
@@ -474,7 +471,6 @@
 				84B4A78D28FD30C9001D2CD3 /* AttractionsViewController.swift in Sources */,
 				84201AFC292BA229001761C4 /* MapPointDetailTableViewCell.swift in Sources */,
 				84E62624292209E200419161 /* MapPointDetailViewController.swift in Sources */,
-				844DCC73290150BC0070D674 /* DetailViewModelProtocol.swift in Sources */,
 				84B4A79F28FD3AFE001D2CD3 /* StartService.swift in Sources */,
 				84B4A78428FD20A7001D2CD3 /* NewsBuilder.swift in Sources */,
 				84B4A78228FD209C001D2CD3 /* NewsPresenter.swift in Sources */,

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class NewsViewModel: DetailViewModelProtocol {
+final class NewsViewModel {
     private var news: News
     var image: String? {
         news.photoPath
@@ -28,7 +28,7 @@ final class NewsViewModel: DetailViewModelProtocol {
     }
 }
 
-final class AttractionsViewModel: DetailViewModelProtocol {
+final class AttractionsViewModel {
     private var attraction: Attraction
     var image: String? {
         attraction.image
@@ -48,7 +48,7 @@ final class AttractionsViewModel: DetailViewModelProtocol {
     }
 }
 
-final class MapPointsViewModel: DetailViewModelProtocol {
+final class MapPointsViewModel {
     private var mapPoints: Map
     var image: String? {
         mapPoints.photoPath

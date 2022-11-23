@@ -16,9 +16,9 @@ final class AttractionDetailViewController: UIViewController {
         return table
     }()
     
-    let viewModel: DetailViewModelProtocol
+    let viewModel: AttractionsViewModel
     
-    init(viewModel: DetailViewModelProtocol) {
+    init(viewModel: AttractionsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
