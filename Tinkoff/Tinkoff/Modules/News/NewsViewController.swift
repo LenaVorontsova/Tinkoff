@@ -101,8 +101,6 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             cell.newsImage.image = R.image.tinkoffIcon()
         }
-
-//      cell.newsImage.image = presenter.newsSearch[indexPath.row].photoPath
         return cell
     }
     

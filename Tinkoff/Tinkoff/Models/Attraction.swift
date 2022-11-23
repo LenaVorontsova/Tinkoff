@@ -13,6 +13,7 @@ struct AttractionNetwork: Decodable {
     var attractionTitle: String?
     var attractionDescriprion: String?
     var attractionAddress: String?
+    var dateOfCreation: String?
 }
 
 struct Attraction {
@@ -20,4 +21,5 @@ struct Attraction {
     var attractionTitle: String?
     var attractionDescriprion: String?
     var attractionAddress: String?
+    var dateOfCreation: String?
 }

@@ -12,4 +12,5 @@ protocol DetailViewModelProtocol {
     var image: String? { get }
     var titleLabel: String? { get }
     var textLabel: String? { get }
+    var dateOfCreation: String? { get }
 }

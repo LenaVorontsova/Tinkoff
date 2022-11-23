@@ -19,6 +19,9 @@ final class NewsViewModel: DetailViewModelProtocol {
     var textLabel: String? {
         news.newsText
     }
+    var dateOfCreation: String? {
+        news.newsDate
+    }
     
     required init(news: News) {
         self.news = news
@@ -36,6 +39,9 @@ final class AttractionsViewModel: DetailViewModelProtocol {
     var textLabel: String? {
         attraction.attractionDescriprion
     }
+    var dateOfCreation: String? {
+        attraction.dateOfCreation
+    }
     
     required init(attraction: Attraction) {
         self.attraction = attraction
@@ -52,6 +58,9 @@ final class MapPointsViewModel: DetailViewModelProtocol {
     }
     var textLabel: String? {
         mapPoints.text
+    }
+    var dateOfCreation: String? {
+        mapPoints.dateOfCreation
     }
     
     required init(mapPoints: Map) {

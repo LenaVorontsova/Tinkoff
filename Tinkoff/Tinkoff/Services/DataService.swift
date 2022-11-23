@@ -87,23 +87,32 @@ final class DataService: IDataService {
     
     func fetchMapPoints(newArray: MapNetwork) {
         for element in newArray {
-            var map = Map(lat: nil, lng: nil, title: nil, text: nil, mapPointType: nil, photoPath: nil)
+            var map = Map(lat: nil,
+                          lng: nil,
+                          title: nil,
+                          text: nil,
+                          mapPointType: nil,
+                          photoPath: nil,
+                          dateOfCreation: nil)
             var attr = Attraction(image: nil,
                                   attractionTitle: nil,
                                   attractionDescriprion: nil,
-                                  attractionAddress: nil)
+                                  attractionAddress: nil,
+                                  dateOfCreation: nil)
             map.lat = element.lat
             map.lng = element.lng
             map.title = element.title
             map.text = element.text
             map.mapPointType = element.mapPointType?.mapPointType
             map.photoPath = element.photoPath
+            map.dateOfCreation = element.dateOfCreation
             mapPoints.append(map)
             if element.mapPointType?.mapPointType == "достопримечательность" {
                 attr.image = element.photoPath
                 attr.attractionTitle = element.title
                 attr.attractionDescriprion = element.text
                 attr.attractionAddress = element.cityInstance?.name
+                attr.dateOfCreation = element.dateOfCreation
                 attractions.append(attr)
             }
         }
@@ -169,7 +178,7 @@ final class DataService: IDataService {
         do {
             let newArr = try context!.fetch(MapData.fetchRequest())
             for element in newArr {
-                var map = Map(lat: nil, lng: nil, title: nil, text: nil)
+                var map = Map(lat: nil, lng: nil, title: nil, text: nil, dateOfCreation: nil)
                 map.lat = element.lat
                 map.lng = element.lng
                 map.title = element.title

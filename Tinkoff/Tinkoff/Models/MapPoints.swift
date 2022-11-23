@@ -15,6 +15,7 @@ struct Map {
     var text: String?
     var mapPointType: String?
     var photoPath: String?
+    var dateOfCreation: String?
 }
 
 struct MapElemenet: Codable {
