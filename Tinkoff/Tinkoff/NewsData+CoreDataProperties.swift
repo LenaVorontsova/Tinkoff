@@ -20,4 +20,6 @@ extension NewsData {
     @NSManaged public var photoPath: String?
     @NSManaged public var text: String?
     @NSManaged public var title: String?
+    @NSManaged public var office: String?
+    @NSManaged public var tag: String?
 }

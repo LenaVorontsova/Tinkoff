@@ -8,7 +8,9 @@
     </entity>
     <entity name="NewsData" representedClassName="NewsData" syncable="YES" codeGenerationType="class">
         <attribute name="dateOfCreation" optional="YES" attributeType="String"/>
+        <attribute name="office" optional="YES" attributeType="String"/>
         <attribute name="photoPath" optional="YES" attributeType="String"/>
+        <attribute name="tag" optional="YES" attributeType="String"/>
         <attribute name="text" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>

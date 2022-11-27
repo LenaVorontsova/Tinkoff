@@ -37,8 +37,8 @@ class NewsViewController: UIViewController {
                                 forCellReuseIdentifier: NewsTableViewCell.identifier)
         view.backgroundColor = .white
         self.title = R.string.modules.newsTitleRus()
-        configureRefresh()
         self.reloadTable()
+        configureRefresh()
     }
     
     private func configureRefresh() {
@@ -71,7 +71,7 @@ class NewsViewController: UIViewController {
 
 extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return presenter.newsSearch.count
+        return presenter.news.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -93,9 +93,9 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
                                                        for: indexPath) as? NewsTableViewCell else {
             return UITableViewCell()
         }
-        let cellModel = NewsTableViewCellFactory.cellModel(presenter.newsSearch[indexPath.section])
+        let cellModel = NewsTableViewCellFactory.cellModel(presenter.news[indexPath.section])
         cell.config(with: cellModel)
-        if let url = URL(string: presenter.newsSearch[indexPath.section].photoPath!),
+        if let url = URL(string: presenter.news[indexPath.section].photoPath!),
            let data = try? Data(contentsOf: url) {
             cell.newsImage.image = UIImage(data: data)
         } else {

@@ -13,6 +13,8 @@ struct News {
     var newsTitle: String?
     var newsText: String?
     var newsDate: String?
+    var office: String?
+    var tag: String?
 }
 
 // MARK: - NewsNetrorkElement

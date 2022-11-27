@@ -15,17 +15,23 @@ struct NewsDetailTableViewCellModel {
     let newsImage: String?
     let newsTitle: String?
     let dateOfCreation: String?
+    let office: String?
+    let tag: String?
 }
 
 enum NewsDetailTableViewCellFactory {
     static func cellModel(detailText: String,
                           newsImage: String,
                           newsTitle: String,
-                          dateOfCreation: String) -> NewsDetailTableViewCellModel {
+                          dateOfCreation: String,
+                          office: String,
+                          tag: String) -> NewsDetailTableViewCellModel {
         NewsDetailTableViewCellModel(detailText: detailText,
                                      newsImage: newsImage,
                                      newsTitle: newsTitle,
-                                     dateOfCreation: dateOfCreation)
+                                     dateOfCreation: dateOfCreation,
+                                     office: office,
+                                     tag: tag)
     }
 }
 
@@ -64,6 +70,26 @@ final class NewsDetailTableViewCell: UITableViewCell {
         return label
     }()
     
+    private lazy var officeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Oфис: "
+        label.font = .systemFont(ofSize: 16)
+        label.textColor = .lightGray
+        label.textAlignment = .left
+        label.backgroundColor = R.color.tinkoffLightGray()
+        return label
+    }()
+    
+    private lazy var tagLabel: UILabel = {
+        let label = UILabel()
+        label.text = "#"
+        label.font = .systemFont(ofSize: 16)
+        label.textColor = .lightGray
+        label.textAlignment = .left
+        label.backgroundColor = R.color.tinkoffLightGray()
+        return label
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = R.color.tinkoffLightGray()
@@ -79,6 +105,8 @@ final class NewsDetailTableViewCell: UITableViewCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(detailText)
         contentView.addSubview(dateOfCreation)
+        contentView.addSubview(officeLabel)
+        contentView.addSubview(tagLabel)
         newsImage.snp.makeConstraints {
             $0.height.width.equalTo(ConstantsDetail.sizeAvatar)
             $0.top.equalTo(contentView.safeAreaLayoutGuide.snp.top).offset(ConstantsDetail.topAndBottom)
@@ -99,19 +127,32 @@ final class NewsDetailTableViewCell: UITableViewCell {
             $0.top.equalTo(detailText.safeAreaLayoutGuide.snp.bottom).offset(ConstantsDetail.topAndBottom)
             $0.leading.equalTo(contentView.safeAreaLayoutGuide.snp.leading).offset(ConstantsDetail.offsetStack)
             $0.trailing.equalTo(contentView.safeAreaLayoutGuide.snp.trailing).offset(-ConstantsDetail.offsetStack)
+        }
+        officeLabel.snp.makeConstraints {
+            $0.top.equalTo(dateOfCreation.safeAreaLayoutGuide.snp.bottom).offset(ConstantsDetail.topAndBottom)
+            $0.leading.equalTo(contentView.safeAreaLayoutGuide.snp.leading).offset(ConstantsDetail.offsetStack)
+            $0.trailing.equalTo(contentView.safeAreaLayoutGuide.snp.trailing).offset(-ConstantsDetail.offsetStack)
+        }
+        tagLabel.snp.makeConstraints {
+            $0.top.equalTo(officeLabel.safeAreaLayoutGuide.snp.bottom).offset(ConstantsDetail.topAndBottom)
+            $0.leading.equalTo(contentView.safeAreaLayoutGuide.snp.leading).offset(ConstantsDetail.offsetStack)
+            $0.trailing.equalTo(contentView.safeAreaLayoutGuide.snp.trailing).offset(-ConstantsDetail.offsetStack)
             $0.bottom.equalTo(contentView.safeAreaLayoutGuide.snp.bottom).offset(-ConstantsDetail.topAndBottom)
         }
     }
     
     func config(with model: NewsDetailTableViewCellModel) {
         detailText.text = model.detailText
+        
         if let url = URL(string: model.newsImage!),
            let data = try? Data(contentsOf: url) {
             newsImage.image = UIImage(data: data)
         } else {
             newsImage.image = R.image.tinkoffIcon()
         }
+        
         titleLabel.text = model.newsTitle
+        
         var dateText = (model.dateOfCreation?.replacingOccurrences(of: "T", with: " "))!
         var arr = dateText.components(separatedBy: ":")
         arr.removeLast()
@@ -125,6 +166,9 @@ final class NewsDetailTableViewCell: UITableViewCell {
         } else {
             dateOfCreation.text = ""
         }
+        
+        officeLabel.text = officeLabel.text! + (model.office ?? "Office")
+        tagLabel.text = tagLabel.text! + (model.tag ?? "Tag")
     }
 }
 

@@ -11,7 +11,7 @@ import UIKit
 final class NewsViewModel {
     private var news: News
     var image: String? {
-        news.photoPath
+        news.photoPath ?? ""
     }
     var titleLabel: String? {
         news.newsTitle
@@ -20,7 +20,13 @@ final class NewsViewModel {
         news.newsText
     }
     var dateOfCreation: String? {
-        news.newsDate
+        news.newsDate ?? ""
+    }
+    var office: String? {
+        news.office ?? ""
+    }
+    var tag: String? {
+        news.tag ?? ""
     }
     
     required init(news: News) {

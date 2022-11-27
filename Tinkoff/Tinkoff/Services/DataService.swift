@@ -74,7 +74,7 @@ final class DataService: IDataService {
                 switch result {
                 case .success(let serverData):
                     self?.fetchMapPoints(newArray: serverData)
-                    // self?.saveToCoreDataMapPoints(newArray: serverData)
+//                    self?.saveToCoreDataMapPoints(newArray: serverData)
                     infoGroup.leave()
                 case .failure(let error):
                     infoGroup.leave()
@@ -134,6 +134,8 @@ final class DataService: IDataService {
             } catch let error as NSError {
                 print("Could not save. \(error), \(error.userInfo)")
             }
+            news.setValue(element.office?.adress, forKey: "office")
+            news.setValue(element.tag?.tag, forKey: "tag")
         }
     }
     
@@ -165,6 +167,8 @@ final class DataService: IDataService {
                 news.newsText = element.text
                 news.newsDate = element.dateOfCreation
                 news.photoPath = element.photoPath
+                news.office = element.office
+                news.tag = element.tag
                 arr.append(news)
             }
         } catch let error as NSError {

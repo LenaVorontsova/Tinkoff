@@ -73,7 +73,9 @@ extension NewsDetailViewController: UITableViewDelegate, UITableViewDataSource {
         let cellModel = NewsDetailTableViewCellFactory.cellModel(detailText: viewModel.textLabel!,
                                                                  newsImage: viewModel.image!,
                                                                  newsTitle: viewModel.titleLabel!,
-                                                                 dateOfCreation: viewModel.dateOfCreation!)
+                                                                 dateOfCreation: viewModel.dateOfCreation!,
+                                                                 office: viewModel.office!,
+                                                                 tag: viewModel.tag!)
         cell.config(with: cellModel)
         return cell
     }
