@@ -11,6 +11,7 @@
 		84201AF8292B94C7001761C4 /* NewsDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84201AF7292B94C7001761C4 /* NewsDetailTableViewCell.swift */; };
 		84201AFA292B9FBD001761C4 /* AttractionsDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84201AF9292B9FBD001761C4 /* AttractionsDetailsTableViewCell.swift */; };
 		84201AFC292BA229001761C4 /* MapPointDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84201AFB292BA229001761C4 /* MapPointDetailTableViewCell.swift */; };
+		84201AFE2933E464001761C4 /* NewPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84201AFD2933E464001761C4 /* NewPointViewController.swift */; };
 		844393522902F48F0072B958 /* Cells.strings in Resources */ = {isa = PBXBuildFile; fileRef = 844393512902F48F0072B958 /* Cells.strings */; };
 		844393542902F5900072B958 /* Modules.strings in Resources */ = {isa = PBXBuildFile; fileRef = 844393532902F5900072B958 /* Modules.strings */; };
 		844393562905BA820072B958 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844393552905BA820072B958 /* NetworkService.swift */; };
@@ -55,6 +56,7 @@
 		84201AF7292B94C7001761C4 /* NewsDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailTableViewCell.swift; sourceTree = "<group>"; };
 		84201AF9292B9FBD001761C4 /* AttractionsDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionsDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		84201AFB292BA229001761C4 /* MapPointDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPointDetailTableViewCell.swift; sourceTree = "<group>"; };
+		84201AFD2933E464001761C4 /* NewPointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPointViewController.swift; sourceTree = "<group>"; };
 		844393512902F48F0072B958 /* Cells.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Cells.strings; sourceTree = "<group>"; };
 		844393532902F5900072B958 /* Modules.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Modules.strings; sourceTree = "<group>"; };
 		844393552905BA820072B958 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				84B4A79928FD3827001D2CD3 /* CateringPresenter.swift */,
 				84B4A79B28FD3836001D2CD3 /* CateringBuilder.swift */,
 				84E62625292215A800419161 /* MapPointsAnnotation.swift */,
+				84201AFD2933E464001761C4 /* NewPointViewController.swift */,
 			);
 			path = Catering;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				84B4A79C28FD3836001D2CD3 /* CateringBuilder.swift in Sources */,
 				844DCC7B290158B30070D674 /* AttractionDetailViewController.swift in Sources */,
 				844393562905BA820072B958 /* NetworkService.swift in Sources */,
+				84201AFE2933E464001761C4 /* NewPointViewController.swift in Sources */,
 				84B4A7A428FD3B66001D2CD3 /* SplashScreenPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

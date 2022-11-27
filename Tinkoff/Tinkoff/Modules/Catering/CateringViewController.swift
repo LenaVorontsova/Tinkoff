@@ -9,10 +9,23 @@ import Foundation
 import UIKit
 import MapKit
 
+enum ConstantsButton {
+    static let sizeButton = 50
+    static let offsetButton = 30
+}
+
 final class CateringViewController: UIViewController, MKMapViewDelegate {
     lazy var mapView: MKMapView = {
         let map = MKMapView()
         return map
+    }()
+    lazy var addPointButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .white
+        button.setTitle("add", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.layer.cornerRadius = 25
+        return button
     }()
     private let presenter: CateringPresenting
     private let locationManager = CLLocationManager()
@@ -29,6 +42,7 @@ final class CateringViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        addPointButton.addTarget(self, action: #selector(addPoint), for: .touchUpInside)
         
         view.backgroundColor = .white
         configureConstraints()
@@ -37,6 +51,11 @@ final class CateringViewController: UIViewController, MKMapViewDelegate {
         presenter.loadData()
         createMapPoints(mapPointsArray: presenter.mapPoints)
         mapView.reloadInputViews()
+    }
+    
+    @objc
+    func addPoint() {
+        presenter.addNewPoint()
     }
     
     private func createMapPoints(mapPointsArray: [Map]) {
@@ -59,10 +78,16 @@ final class CateringViewController: UIViewController, MKMapViewDelegate {
     
     private func configureConstraints() {
         view.addSubview(mapView)
+        mapView.addSubview(addPointButton)
         mapView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.bottom.equalToSuperview()
             $0.trailing.leading.equalToSuperview()
+        }
+        addPointButton.snp.makeConstraints {
+            $0.height.width.equalTo(ConstantsButton.sizeButton)
+            $0.trailing.equalTo(mapView.safeAreaLayoutGuide.snp.trailing).offset(-ConstantsButton.offsetButton)
+            $0.bottom.equalTo(mapView.safeAreaLayoutGuide.snp.bottom).offset(-ConstantsButton.offsetButton)
         }
     }
     

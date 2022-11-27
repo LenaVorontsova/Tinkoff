@@ -17,6 +17,7 @@ protocol CateringPresenting {
     func loadData()
     func getInfoMapPoints()
     func pathPoint(mapPoint: Map) -> MapPointsViewModel
+    func addNewPoint()
 }
 
 final class CateringPresenter: CateringPresenting {
@@ -80,5 +81,9 @@ final class CateringPresenter: CateringPresenting {
     
     func pathPoint(mapPoint: Map) -> MapPointsViewModel {
         return MapPointsViewModel(mapPoints: mapPoint)
+    }
+    
+    func addNewPoint() {
+        
     }
 }
