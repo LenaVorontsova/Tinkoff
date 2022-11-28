@@ -18,6 +18,7 @@ protocol CateringPresenting {
     func getInfoMapPoints()
     func pathPoint(mapPoint: Map) -> MapPointsViewModel
     func addNewPoint()
+    func createNewPoint(point: MapElemenet)
 }
 
 final class CateringPresenter: CateringPresenting {
@@ -84,7 +85,24 @@ final class CateringPresenter: CateringPresenting {
     }
     
     func addNewPoint() {
-        let vc = NewPointViewController()
+        let vc = NewPointViewController(presenter: self)
         self.controller?.present(vc, animated: true)
     }
+    
+    func createNewPoint(point: MapElemenet) {
+        let mapAnnotations = MapPointsAnnotation()
+        mapAnnotations.newPoint = point
+        if let lat = Double(point.lat!),
+            let lng = Double(point.lng!) {
+            let newLat = CLLocationDegrees(lat)
+            let newLng = CLLocationDegrees(lng)
+            if let mapPointType = point.mapPointType?.mapPointType,
+                let title = point.title {
+                mapAnnotations.title = mapPointType + ": " + title
+            }
+            mapAnnotations.coordinate = CLLocationCoordinate2D(latitude: newLat, longitude: newLng)
+            controller?.mapView.addAnnotation(mapAnnotations)
+        }
+    }
 }
+

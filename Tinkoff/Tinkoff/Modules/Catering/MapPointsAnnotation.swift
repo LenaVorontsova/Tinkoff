@@ -10,4 +10,5 @@ import MapKit
 
 final class MapPointsAnnotation: MKPointAnnotation {
     var point: Map?
+    var newPoint: MapElemenet?
 }
