@@ -9,9 +9,13 @@ import Foundation
 import UIKit
 import MapKit
 
-enum ConstantsButton {
+enum ConstantsMap {
     static let sizeButton = 50
     static let offsetButton = 30
+    static let widthTF = 100
+    static let offsetTF = 20
+    static let topTF = 30
+    static let bottomTF = 100
 }
 
 final class CateringViewController: UIViewController, MKMapViewDelegate {
@@ -85,9 +89,9 @@ final class CateringViewController: UIViewController, MKMapViewDelegate {
             $0.trailing.leading.equalToSuperview()
         }
         addPointButton.snp.makeConstraints {
-            $0.height.width.equalTo(ConstantsButton.sizeButton)
-            $0.trailing.equalTo(mapView.safeAreaLayoutGuide.snp.trailing).offset(-ConstantsButton.offsetButton)
-            $0.bottom.equalTo(mapView.safeAreaLayoutGuide.snp.bottom).offset(-ConstantsButton.offsetButton)
+            $0.height.width.equalTo(ConstantsMap.sizeButton)
+            $0.trailing.equalTo(mapView.safeAreaLayoutGuide.snp.trailing).offset(-ConstantsMap.offsetButton)
+            $0.bottom.equalTo(mapView.safeAreaLayoutGuide.snp.bottom).offset(-ConstantsMap.offsetButton)
         }
     }
     

@@ -84,6 +84,7 @@ final class CateringPresenter: CateringPresenting {
     }
     
     func addNewPoint() {
-        
+        let vc = NewPointViewController()
+        self.controller?.present(vc, animated: true)
     }
 }
