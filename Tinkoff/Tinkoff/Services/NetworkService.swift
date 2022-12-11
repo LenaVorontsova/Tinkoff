@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 final class NetworkService {
-    var baseURL = "http://91.146.14.63:5000"
+    var baseURL = "http://91.146.21.39:5000"
     
     func getInfoNews(endPoint: String,
                      completion: @escaping (Result<NewsNetwork, Error>) -> Void) {
@@ -42,3 +42,4 @@ final class NetworkService {
         })
     }
 }
+// 56.852018, 53.215641

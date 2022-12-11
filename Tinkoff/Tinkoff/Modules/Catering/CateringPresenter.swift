@@ -103,6 +103,14 @@ final class CateringPresenter: CateringPresenting {
             mapAnnotations.coordinate = CLLocationCoordinate2D(latitude: newLat, longitude: newLng)
             controller?.mapView.addAnnotation(mapAnnotations)
         }
+        let newPoint = Map(lat: point.lat,
+                           lng: point.lng,
+                           title: point.title,
+                           text: point.text,
+                           mapPointType: point.mapPointType?.mapPointType,
+                           photoPath: nil,
+                           dateOfCreation: point.dateOfCreation)
+        mapPoints.append(newPoint)
+        controller?.mapView.reloadInputViews()
     }
 }
-

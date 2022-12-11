@@ -8,41 +8,77 @@
 import Foundation
 import UIKit
 import SnapKit
+import Alamofire
 
 final class NewPointViewController: UIViewController {
     private lazy var latTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Введите широту (например, 56.871414)"
+        textField.placeholder = " Введите широту (например, 56.871414)"
+        textField.backgroundColor = R.color.tinkoffLightGray()
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = R.color.tinkoffGray()?.cgColor
+        textField.borderStyle = .roundedRect
+        textField.frame.size.height = 150
         return textField
     }()
     private lazy var lngTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Введите долготу (например, 56.871414)"
+        textField.placeholder = " Введите долготу (например, 56.871414)"
+        textField.backgroundColor = R.color.tinkoffLightGray()
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = R.color.tinkoffGray()?.cgColor
+        textField.borderStyle = .roundedRect
+        textField.frame.size.height = 150
         return textField
     }()
     private lazy var cityNameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Введите название города"
+        textField.backgroundColor = R.color.tinkoffLightGray()
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = R.color.tinkoffGray()?.cgColor
+        textField.borderStyle = .roundedRect
+        textField.frame.size.height = 150
         return textField
     }()
     private lazy var titleTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Введите заголовок"
+        textField.placeholder = " Введите заголовок"
+        textField.backgroundColor = R.color.tinkoffLightGray()
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = R.color.tinkoffGray()?.cgColor
+        textField.borderStyle = .roundedRect
+        textField.frame.size.height = 150
         return textField
     }()
     private lazy var textTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Введите описание"
+        textField.placeholder = " Введите описание"
+        textField.backgroundColor = R.color.tinkoffLightGray()
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = R.color.tinkoffGray()?.cgColor
+        textField.borderStyle = .roundedRect
+        textField.frame.size.height = 150
         return textField
     }()
     private lazy var cashBackTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Есть ли кэшбэк (Да или Нет)"
+        textField.placeholder = " Есть ли кэшбэк (Да или Нет)"
+        textField.backgroundColor = R.color.tinkoffLightGray()
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = R.color.tinkoffGray()?.cgColor
+        textField.borderStyle = .roundedRect
+        textField.frame.size.height = 150
         return textField
     }()
     private lazy var mapPointTypeTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Введите тип точки"
+        textField.placeholder = " Введите тип точки"
+        textField.backgroundColor = R.color.tinkoffLightGray()
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = R.color.tinkoffGray()?.cgColor
+        textField.borderStyle = .roundedRect
+        textField.frame.size.height = 150
         return textField
     }()
     private lazy var stack: UIStackView = {
@@ -63,9 +99,11 @@ final class NewPointViewController: UIViewController {
     private lazy var saveButton: UIButton = {
         let button = UIButton()
         button.setTitle("Cохранить", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .green
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = R.color.tinkoffLightGray()
         button.layer.cornerRadius = 10
+        button.layer.borderWidth = 1
+        button.layer.borderColor = R.color.tinkoffGray()?.cgColor
         return button
     }()
     private var presenter: CateringPresenting
@@ -90,26 +128,27 @@ final class NewPointViewController: UIViewController {
     
     @objc
     func saveNewPoint() {
-        var city = CityInstance(id: nil, name: cityNameTextField.text)
-        var pointType = MapPointType(id: nil, mapPointType: mapPointTypeTextField.text)
+        saveButton.backgroundColor = R.color.tinkoffGray()
+        let city = CityInstance(id: nil, name: cityNameTextField.text)
+        let pointType = MapPointType(id: nil, mapPointType: mapPointTypeTextField.text)
         var cashBack = false
         if cashBackTextField.text == "Да" || cashBackTextField.text == "да" {
             cashBack = true
         }
         let curDate = String(Date().description(with: .autoupdatingCurrent))
-        var newPoint = MapElemenet(id: nil,
-                                         lat: latTextField.text,
-                                         lng: lngTextField.text,
-                                         cityInstance: city,
-                                         title: titleTextField.text,
-                                         text: textTextField.text,
-                                         photoPath: nil,
-                                         likes: nil,
-                                         disLikes: nil,
-                                         tinkoffCashBack: cashBack,
-                                         comments: nil,
-                                         dateOfCreation: curDate,
-                                         mapPointType: pointType)
+        let newPoint = MapElemenet(id: nil,
+                                   lat: latTextField.text,
+                                   lng: lngTextField.text,
+                                   cityInstance: city,
+                                   title: titleTextField.text,
+                                   text: textTextField.text,
+                                   photoPath: nil,
+                                   likes: nil,
+                                   disLikes: nil,
+                                   tinkoffCashBack: cashBack,
+                                   comments: nil,
+                                   dateOfCreation: curDate,
+                                   mapPointType: pointType)
         presenter.createNewPoint(point: newPoint)
         self.dismiss(animated: true)
     }

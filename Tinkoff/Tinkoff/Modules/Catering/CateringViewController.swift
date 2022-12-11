@@ -25,10 +25,11 @@ final class CateringViewController: UIViewController, MKMapViewDelegate {
     }()
     lazy var addPointButton: UIButton = {
         let button = UIButton()
+        button.setImage(UIImage(systemName: "plus"), for: .normal)
         button.backgroundColor = .white
-        button.setTitle("add", for: .normal)
-        button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 25
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.systemBlue.cgColor
         return button
     }()
     private let presenter: CateringPresenting

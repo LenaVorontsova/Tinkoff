@@ -24,7 +24,7 @@ struct MapElemenet: Codable {
     let cityInstance: CityInstance?
     let title, text, photoPath: String?
     let likes, disLikes: Int?
-    let tinkoffCashBack: Bool?
+    let tinkoffCashBack: Bool
     let comments, dateOfCreation: String?
     let mapPointType: MapPointType?
 }
